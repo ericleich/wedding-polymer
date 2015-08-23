@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>polymer maps demo</title>
+  <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+  <link rel="import" href="bower_components/paper-button/paper-button.html">
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+  <style>
+
+    body {
+      margin: 0;
+      background: linear-gradient(rgb(214, 227, 231), purple) fixed;
+    }
+
+    .core-header {
+
+      font-size: 16px;
+      padding: 0 10px;
+      background-color: #4F7DC9;
+      color: #FFF;
+
+    }
+    
+
+    .content {
+      height: 2000px;
+      background: linear-gradient(rgb(214, 227, 231), lightblue);
+    }
+
+    paper-button {
+      margin: 10px;
+    }
+
+    paper-button[raised].colored {
+      background: red;
+      color: #fff;
+    }
+
+    .stuff {
+      margin: auto;
+      width: 960px;
+      border: 1px solid black;
+    }
+  </style>
+
+
+</head>
+<body fullbleed>
+  <div class="stuff">
+  <core-header-panel flex>
+    <core-toolbar>
+      <div layout horizontal class="core-header">
+          <paper-button flex raised class="colored">Home</paper-button>
+          <paper-button flex raised class="colored">Our Story</paper-button>
+          <paper-button flex raised class="colored">Gallery</paper-button>
+          <paper-button raised class="colored">Accomodations</paper-button>
+          <paper-button flex raised class="colored">Registry</paper-button>
+          <paper-button flex raised class="colored">Events</paper-button>
+      </div>
+      <div class="content">
+
+          abcdefg
+
+      </div>
+    </core-toolbar>
+  </core-header-panel>
+  </div>
+</body>
+</html>
