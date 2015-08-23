@@ -5,67 +5,77 @@
   <title>polymer maps demo</title>
   <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
   <link rel="import" href="bower_components/paper-button/paper-button.html">
+  <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+  <link rel="import" href="bower_components/core-pages/core-pages.html">
   <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
   <style>
 
     body {
       margin: 0;
-      background: linear-gradient(rgb(214, 227, 231), purple) fixed;
-    }
-
-    .core-header {
-
-      font-size: 16px;
-      padding: 0 10px;
-      background-color: #4F7DC9;
-      color: #FFF;
-
-    }
-    
-
-    .content {
-      height: 2000px;
-      background: linear-gradient(rgb(214, 227, 231), lightblue);
-    }
-
-    paper-button {
-      margin: 10px;
-    }
-
-    paper-button[raised].colored {
-      background: red;
-      color: #fff;
+      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
     }
 
     .stuff {
       margin: auto;
       width: 960px;
-      border: 1px solid black;
+      /*background: linear-gradient(rgb(214, 227, 231), purple) fixed;*/
+    }
+
+    paper-tabs.transparent-teal {
+      background-color: transparent;
+      font-size: 16px;
+      font-weight: bold;
+      color: #00bcd4;
+    }
+
+
+    core-pages {
+      height: 1000px;
+    }
+
+    paper-tabs paper-tab::shadow #ink {
+      color: #ff4081;
+    }
+
+    paper-tabs::shadow #selectionBar {
+      background-color: #ff4081;
     }
   </style>
 
+  <script>
+    function init() {
+      var tabs = document.querySelector('paper-tabs');
+      var pages = document.querySelector('core-pages');
+
+      tabs.addEventListener('core-select', function() {
+        pages.selected = tabs.selected;
+      });
+    }
+  </script>
+
 
 </head>
-<body fullbleed>
+<body unresolved fullbleed onload="init()">
   <div class="stuff">
-  <core-header-panel flex>
-    <core-toolbar>
-      <div layout horizontal class="core-header">
-          <paper-button flex raised class="colored">Home</paper-button>
-          <paper-button flex raised class="colored">Our Story</paper-button>
-          <paper-button flex raised class="colored">Gallery</paper-button>
-          <paper-button raised class="colored">Accomodations</paper-button>
-          <paper-button flex raised class="colored">Registry</paper-button>
-          <paper-button flex raised class="colored">Events</paper-button>
-      </div>
-      <div class="content">
+    <h1 style="text-align: center">Nicole and Eric's Wedding</h1>
+    <paper-tabs class="transparent-teal">
+      <paper-tab>Home</paper-tab>
+      <paper-tab>Our Story</paper-tab>
+      <paper-tab>Gallery</paper-tab>
+      <paper-tab>Accomodations</paper-tab>
+      <paper-tab>Registry</paper-tab>
+      <paper-tab>Events</paper-tab>
+    </paper-tabs>
 
-          abcdefg
-
-      </div>
-    </core-toolbar>
-  </core-header-panel>
+    <core-pages>
+      <div style="background-color: red;">Page 1</div>
+      <div style="background-color: orange;">Page 2</div>
+      <div style="background-color: yellow;">Page 3</div>
+      <div style="background-color: green;">Page 4</div>
+      <div style="background-color: blue;">Page 5</div>
+      <div style="background-color: purple;">Page 6</div>
+    </core-pages>
   </div>
 </body>
 </html>
