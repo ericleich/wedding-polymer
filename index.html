@@ -3,22 +3,24 @@
 <html>
 <head>
   <title>polymer maps demo</title>
-  <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
   <link rel="import" href="bower_components/paper-button/paper-button.html">
   <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
-  <link rel="import" href="bower_components/core-pages/core-pages.html">
-  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="bower_components/iron-pages/iron-pages.html">
+  <link rel="import" href="bower_components/my-countdown/my-countdown.html">
 
   <style>
 
     body {
       margin: 0;
       font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+      background: linear-gradient(rgb(214, 227, 231), purple) fixed;
     }
 
     .stuff {
       margin: auto;
       width: 960px;
+      background-color: white;
       /*background: linear-gradient(rgb(214, 227, 231), purple) fixed;*/
     }
 
@@ -30,8 +32,12 @@
     }
 
 
-    core-pages {
+    iron-pages {
       height: 1000px;
+    }
+
+    iron-pages .fill {
+      height: 100%;
     }
 
     paper-tabs paper-tab::shadow #ink {
@@ -46,9 +52,9 @@
   <script>
     function init() {
       var tabs = document.querySelector('paper-tabs');
-      var pages = document.querySelector('core-pages');
+      var pages = document.querySelector('iron-pages');
 
-      tabs.addEventListener('core-select', function() {
+      tabs.addEventListener('iron-select', function() {
         pages.selected = tabs.selected;
       });
     }
@@ -58,8 +64,8 @@
 </head>
 <body unresolved fullbleed onload="init()">
   <div class="stuff">
-    <h1 style="text-align: center">Nicole and Eric's Wedding</h1>
-    <paper-tabs class="transparent-teal">
+    <h1 style="text-align: center; margin-top: 0px">Nicole and Eric's Wedding</h1>
+    <paper-tabs class="transparent-teal" selected="{{selected}}">
       <paper-tab>Home</paper-tab>
       <paper-tab>Our Story</paper-tab>
       <paper-tab>Gallery</paper-tab>
@@ -68,14 +74,14 @@
       <paper-tab>Events</paper-tab>
     </paper-tabs>
 
-    <core-pages>
-      <div style="background-color: red;">Page 1</div>
-      <div style="background-color: orange;">Page 2</div>
-      <div style="background-color: yellow;">Page 3</div>
-      <div style="background-color: green;">Page 4</div>
-      <div style="background-color: blue;">Page 5</div>
-      <div style="background-color: purple;">Page 6</div>
-    </core-pages>
+    <iron-pages selected="1">
+      <div class="fill" style="background-color: white;">Page 1</div>
+      <div class="fill" style="background-color: orange;"><my-countdown></my-countdown></div>
+      <div class="fill" style="background-color: yellow;">Page 3</div>
+      <div class="fill" style="background-color: green;">Page 4</div>
+      <div class="fill" style="background-color: blue;">Page 5</div>
+      <div class="fill" style="background-color: purple;">Page 6</div>
+    </iron-pages>
   </div>
 </body>
 </html>
