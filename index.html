@@ -40,13 +40,25 @@
       height: 100%;
     }
 
+    paper-tab {
+      --paper-tab-ink: red;
+    }
+
     paper-tabs paper-tab::shadow #ink {
       color: #ff4081;
+      --paper-tab-ink: red;
     }
 
     paper-tabs::shadow #selectionBar {
       background-color: #ff4081;
     }
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @font-face { font-family: Edwardian; src: url('Edwardian_Script_ITC.otf'); } 
   </style>
 
   <script>
@@ -64,8 +76,9 @@
 </head>
 <body unresolved fullbleed onload="init()">
   <div class="stuff">
-    <h1 style="text-align: center; margin-top: 0px">Nicole and Eric's Wedding</h1>
-    <paper-tabs class="transparent-teal" selected="{{selected}}">
+    <img src="nicole-eric.png" width=500 class="center">
+
+    <paper-tabs class="transparent-teal" selected="0" style="margin-bottom: 1px">
       <paper-tab>Home</paper-tab>
       <paper-tab>Our Story</paper-tab>
       <paper-tab>Gallery</paper-tab>
@@ -74,9 +87,10 @@
       <paper-tab>Events</paper-tab>
     </paper-tabs>
 
-    <iron-pages selected="1">
-      <div class="fill" style="background-color: white;">Page 1</div>
-      <div class="fill" style="background-color: orange;"><my-countdown></my-countdown></div>
+    <iron-pages selected="0">
+      <div class="fill" style="background-color: white;">The wedding ceremony starts in:
+        <my-countdown style="text-align: center"></my-countdown></div>
+      <div class="fill" style="background-color: orange;">Page 2</div>
       <div class="fill" style="background-color: yellow;">Page 3</div>
       <div class="fill" style="background-color: green;">Page 4</div>
       <div class="fill" style="background-color: blue;">Page 5</div>
