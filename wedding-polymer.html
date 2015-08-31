@@ -1,0 +1,140 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="bower_components/my-countdown/my-countdown.html">
+<script src="bower_components/moment/moment.js"></script>
+
+<!--
+A wedding website.
+
+##### Examples
+
+    <wedding-polymer></wedding-polymer>
+
+@demo
+@element wedding-polymer
+@author Eric Leichtenschlag
+
+### Based off of http://Granze.github.io/flip-clock
+-->
+
+<dom-module id="wedding-polymer">
+    <style>
+
+    :host {
+      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+    }
+
+    .stuff {
+      width: 960px;
+      background-color: white;
+      display: table-cell;
+    }
+
+    .morestuff {
+      display: table;
+      margin: auto;
+    }
+
+    paper-tabs.transparent-teal {
+      background-color: transparent;
+      font-size: 16px;
+      font-weight: bold;
+      color: #00bcd4;
+    }
+
+    .table-cell {
+      display: table-cell;
+    }
+
+    .lace-left {
+      background-image: url("images/lace-left.png");
+      background-repeat: repeat-y;
+      width: 45px; /* update if width changes. */
+    }
+
+    .lace-right {
+      background-image: url("images/lace-right.png");
+      background-repeat: repeat-y;
+      width: 45px; /* update if width changes. */
+    }
+
+    iron-pages {
+      /* height: 1000px; */
+    }
+
+    iron-pages .fill {
+      /* height: 100%; */
+    }
+
+    paper-tabs {
+      --paper-tab-ink: red;
+    }
+
+    paper-tabs paper-tab::shadow #ink {
+      color: #ff4081;
+      --paper-tab-ink: red;
+    }
+
+    paper-tabs::shadow #selectionBar {
+      background-color: #ff4081;
+    }
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @font-face {
+      font-family: Edwardian;
+      src: url('fonts/Edwardian_Script_ITC.otf');
+    } 
+  </style>
+  <template>
+    <div class="morestuff">
+      <div class="table-cell lace-left"></div>
+
+      <div class="stuff">
+        <img src="images/nicole-eric.png" width=500 class="center">
+
+        <paper-tabs class="transparent-teal" selected="0" style="margin-bottom: 1px">
+          <paper-tab>Home</paper-tab>
+          <paper-tab>Our Story</paper-tab>
+          <paper-tab>Gallery</paper-tab>
+          <paper-tab>Accomodations</paper-tab>
+          <paper-tab>Registry</paper-tab>
+          <paper-tab>Events</paper-tab>
+        </paper-tabs>
+
+        <iron-pages selected="0">
+          <div class="fill">The wedding ceremony starts in:
+            <my-countdown style="text-align: center"></my-countdown></div>
+          <div class="fill">Page 2</div>
+          <div class="fill">Page 3</div>
+          <div class="fill">Page 4</div>
+          <div class="fill">Page 5</div>
+          <div class="fill">Page 6</div>
+        </iron-pages>
+      </div>
+
+      <div class="table-cell lace-right"></div>
+    </div>
+  </template>
+</dom-module>
+
+<script>
+  console.log("test");
+  Polymer({
+    is: 'wedding-polymer',
+    ready: function() {
+      console.log("ready");
+      var tabs = document.querySelector('paper-tabs');
+      var pages = document.querySelector('iron-pages');
+
+      tabs.addEventListener('iron-select', function() {
+        pages.selected = tabs.selected;
+      });
+    }
+  });
+</script>

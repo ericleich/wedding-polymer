@@ -1,128 +1,18 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>polymer maps demo</title>
+  <title>Nicole and Eric's Wedding</title>
   <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-  <link rel="import" href="bower_components/paper-button/paper-button.html">
-  <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
-  <link rel="import" href="bower_components/iron-pages/iron-pages.html">
-  <link rel="import" href="bower_components/my-countdown/my-countdown.html">
+  <link rel="import" href="wedding-polymer.html">
 
   <style>
-
-    body {
+      body {
       margin: 0;
-      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
       background-image: url("images/burlap-background.jpg");
-      /* background: linear-gradient(rgb(214, 227, 231), purple) fixed; */
     }
-
-    .stuff {
-      width: 960px;
-      background-color: white;
-      display: table-cell;
-      vertical-align: top; /* due to being part of an inline-block now. */
-    }
-
-    .morestuff {
-      display: table;
-      margin: auto;
-    }
-
-    paper-tabs.transparent-teal {
-      background-color: transparent;
-      font-size: 16px;
-      font-weight: bold;
-      color: #00bcd4;
-    }
-
-    .table-cell {
-      display: table-cell;
-    }
-
-    .lace-left {
-      background-image: url("images/lace-left.png");
-      background-repeat: repeat-y;
-      width: 45px; /* update if width changes. */
-    }
-
-    .lace-right {
-      background-image: url("images/lace-right.png");
-      background-repeat: repeat-y;
-      width: 45px; /* update if width changes. */
-    }
-
-    iron-pages {
-      /* height: 1000px; */
-    }
-
-    iron-pages .fill {
-      /* height: 100%; */
-    }
-
-    paper-tab {
-      --paper-tab-ink: red;
-    }
-
-    paper-tabs paper-tab::shadow #ink {
-      color: #ff4081;
-      --paper-tab-ink: red;
-    }
-
-    paper-tabs::shadow #selectionBar {
-      background-color: #ff4081;
-    }
-    .center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    @font-face { font-family: Edwardian; src: url('fonts/Edwardian_Script_ITC.otf'); } 
   </style>
-
-  <script>
-    function init() {
-      var tabs = document.querySelector('paper-tabs');
-      var pages = document.querySelector('iron-pages');
-
-      tabs.addEventListener('iron-select', function() {
-        pages.selected = tabs.selected;
-      });
-    }
-  </script>
-
-
 </head>
-<body unresolved fullbleed onload="init()">
-  <div class="morestuff">
-    <div class="table-cell lace-left"></div>
-
-    <div class="stuff">
-      <img src="images/nicole-eric.png" width=500 class="center">
-
-      <paper-tabs class="transparent-teal" selected="0" style="margin-bottom: 1px">
-        <paper-tab>Home</paper-tab>
-        <paper-tab>Our Story</paper-tab>
-        <paper-tab>Gallery</paper-tab>
-        <paper-tab>Accomodations</paper-tab>
-        <paper-tab>Registry</paper-tab>
-        <paper-tab>Events</paper-tab>
-      </paper-tabs>
-
-      <iron-pages selected="0">
-        <div class="fill">The wedding ceremony starts in:
-          <my-countdown style="text-align: center"></my-countdown></div>
-        <div class="fill">Page 2</div>
-        <div class="fill">Page 3</div>
-        <div class="fill">Page 4</div>
-        <div class="fill">Page 5</div>
-        <div class="fill">Page 6</div>
-      </iron-pages>
-    </div>
-
-    <div class="table-cell lace-right"></div>
-  </div>
+<body unresolved fullbleed>
+  <wedding-polymer></wedding-polymer>
 </body>
 </html>
