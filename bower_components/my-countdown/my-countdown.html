@@ -30,17 +30,18 @@ A countdown timer made with Polymer
       font-size: 40px;
       padding: 5px 15px;
       border-radius: 0px;
-      color: #fff;
+      color: black;
       box-shadow: 1px 1px 1px #555;
       background-color: #333;
       background: -webkit-linear-gradient(top, #0F0 0%, #444 50%, #333 51%, #222 100%);
-      background: linear-gradient(to bottom, #F00 0%,#444 50%,#333 50%,#222 100%);
+      background: linear-gradient(to bottom, #af8aaf 0%, white 50%, #af8aaf 100%);
     }
 
     #clock .header {
       font-size: 40px;
       text-align: center;
       font-family: Edwardian_Script;
+      margin-top: 5px;
     }
 
     #clock .num-wrapper {
@@ -60,39 +61,39 @@ A countdown timer made with Polymer
     @font-face {
       font-family: PT_Serif;
       src: url('PT_Serif.ttf');
-    } 
+    }
 
   </style>
   <template>
     <div id="clock">
       <div class="group-wrapper">
-        <div class="header">Days</div>
         <div class="num-wrapper">
           <span class="num" id="days0">[[time.0]]</span>
           <span class="num" id="days1">[[time.1]]</span>
           <span class="num" id="days2">[[time.2]]</span>
         </div>
+        <div class="header">Days</div>
       </div>
       <div class="group-wrapper">
-        <div class="header">Hours</div>
         <div class="num-wrapper">
           <span class="num" id="hours0">[[time.3]]</span>
           <span class="num" id="hours1">[[time.4]]</span>
         </div>
+        <div class="header">Hours</div>
       </div>
       <div class="group-wrapper">
-        <div class="header">Minutes</div>
         <div class="num-wrapper">
           <span class="num" id="minutes0">[[time.5]]</span>
           <span class="num" id="minutes1">[[time.6]]</span>
         </div>
+        <div class="header">Minutes</div>
       </div>
       <div class="group-wrapper">
-        <div class="header">Seconds</div>
         <div class="num-wrapper">
           <span class="num" id="seconds0">[[time.7]]</span>
           <span class="num" id="seconds1">[[time.8]]</span>
         </div>
+        <div class="header">Seconds</div>
       </div>
     </div>
   </template>

@@ -23,7 +23,7 @@ A wedding website.
     <style>
 
     :host {
-      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+      font-family: PT_Serif;
     }
 
     .stuff {
@@ -41,7 +41,7 @@ A wedding website.
       background-color: transparent;
       font-size: 16px;
       font-weight: bold;
-      color: #00bcd4;
+      color: #660066;
     }
 
     .table-cell {
@@ -69,12 +69,12 @@ A wedding website.
     }
 
     paper-tabs {
-      --paper-tab-ink: red;
+      --paper-tab-ink: #660066;
     }
 
     paper-tabs paper-tab::shadow #ink {
-      color: #ff4081;
-      --paper-tab-ink: red;
+      color: #660066;
+      --paper-tab-ink: #660066;
     }
 
     paper-tabs::shadow #selectionBar {
@@ -89,7 +89,12 @@ A wedding website.
     @font-face {
       font-family: Edwardian;
       src: url('fonts/Edwardian_Script_ITC.otf');
-    } 
+    }
+
+    @font-face {
+      font-family: PT_Serif;
+      src: url('PT_Serif.ttf');
+    }
   </style>
   <template>
     <div class="morestuff">
