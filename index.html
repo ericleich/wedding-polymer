@@ -14,14 +14,20 @@
     body {
       margin: 0;
       font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
-      background: linear-gradient(rgb(214, 227, 231), purple) fixed;
+      background-image: url("images/burlap-background.jpg");
+      /* background: linear-gradient(rgb(214, 227, 231), purple) fixed; */
     }
 
     .stuff {
-      margin: auto;
       width: 960px;
       background-color: white;
-      /*background: linear-gradient(rgb(214, 227, 231), purple) fixed;*/
+      display: table-cell;
+      vertical-align: top; /* due to being part of an inline-block now. */
+    }
+
+    .morestuff {
+      display: table;
+      margin: auto;
     }
 
     paper-tabs.transparent-teal {
@@ -31,13 +37,28 @@
       color: #00bcd4;
     }
 
+    .table-cell {
+      display: table-cell;
+    }
+
+    .lace-left {
+      background-image: url("images/lace-left.png");
+      background-repeat: repeat-y;
+      width: 45px; /* update if width changes. */
+    }
+
+    .lace-right {
+      background-image: url("images/lace-right.png");
+      background-repeat: repeat-y;
+      width: 45px; /* update if width changes. */
+    }
 
     iron-pages {
-      height: 1000px;
+      /* height: 1000px; */
     }
 
     iron-pages .fill {
-      height: 100%;
+      /* height: 100%; */
     }
 
     paper-tab {
@@ -58,7 +79,7 @@
       margin-right: auto;
     }
 
-    @font-face { font-family: Edwardian; src: url('Edwardian_Script_ITC.otf'); } 
+    @font-face { font-family: Edwardian; src: url('fonts/Edwardian_Script_ITC.otf'); } 
   </style>
 
   <script>
@@ -75,27 +96,33 @@
 
 </head>
 <body unresolved fullbleed onload="init()">
-  <div class="stuff">
-    <img src="nicole-eric.png" width=500 class="center">
+  <div class="morestuff">
+    <div class="table-cell lace-left"></div>
 
-    <paper-tabs class="transparent-teal" selected="0" style="margin-bottom: 1px">
-      <paper-tab>Home</paper-tab>
-      <paper-tab>Our Story</paper-tab>
-      <paper-tab>Gallery</paper-tab>
-      <paper-tab>Accomodations</paper-tab>
-      <paper-tab>Registry</paper-tab>
-      <paper-tab>Events</paper-tab>
-    </paper-tabs>
+    <div class="stuff">
+      <img src="images/nicole-eric.png" width=500 class="center">
 
-    <iron-pages selected="0">
-      <div class="fill" style="background-color: white;">The wedding ceremony starts in:
-        <my-countdown style="text-align: center"></my-countdown></div>
-      <div class="fill" style="background-color: orange;">Page 2</div>
-      <div class="fill" style="background-color: yellow;">Page 3</div>
-      <div class="fill" style="background-color: green;">Page 4</div>
-      <div class="fill" style="background-color: blue;">Page 5</div>
-      <div class="fill" style="background-color: purple;">Page 6</div>
-    </iron-pages>
+      <paper-tabs class="transparent-teal" selected="0" style="margin-bottom: 1px">
+        <paper-tab>Home</paper-tab>
+        <paper-tab>Our Story</paper-tab>
+        <paper-tab>Gallery</paper-tab>
+        <paper-tab>Accomodations</paper-tab>
+        <paper-tab>Registry</paper-tab>
+        <paper-tab>Events</paper-tab>
+      </paper-tabs>
+
+      <iron-pages selected="0">
+        <div class="fill">The wedding ceremony starts in:
+          <my-countdown style="text-align: center"></my-countdown></div>
+        <div class="fill">Page 2</div>
+        <div class="fill">Page 3</div>
+        <div class="fill">Page 4</div>
+        <div class="fill">Page 5</div>
+        <div class="fill">Page 6</div>
+      </iron-pages>
+    </div>
+
+    <div class="table-cell lace-right"></div>
   </div>
 </body>
 </html>
