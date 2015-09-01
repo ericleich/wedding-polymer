@@ -27,7 +27,7 @@ A wedding website.
     }
 
     .stuff {
-      width: 960px;
+      min-width: 960px;
       background-color: white;
       display: table-cell;
     }
@@ -51,17 +51,18 @@ A wedding website.
     .lace-left {
       background-image: url("images/lace-left.png");
       background-repeat: repeat-y;
-      width: 45px; /* update if width changes. */
+      min-width: 45px; /* update if width changes. */
     }
 
     .lace-right {
       background-image: url("images/lace-right.png");
       background-repeat: repeat-y;
-      width: 45px; /* update if width changes. */
+      min-width: 45px; /* update if width changes. */
     }
 
     iron-pages {
       /* height: 1000px; */
+      margin: 30px;
     }
 
     iron-pages .fill {
@@ -69,17 +70,13 @@ A wedding website.
     }
 
     paper-tabs {
+      --paper-tabs-selection-bar-color: #660066;
+    }
+
+    paper-tab {
       --paper-tab-ink: #660066;
     }
 
-    paper-tabs paper-tab::shadow #ink {
-      color: #660066;
-      --paper-tab-ink: #660066;
-    }
-
-    paper-tabs::shadow #selectionBar {
-      background-color: #ff4081;
-    }
     .center {
       display: block;
       margin-left: auto;
@@ -114,7 +111,9 @@ A wedding website.
 
         <iron-pages selected="0">
           <div class="fill">The wedding ceremony starts in:
-            <my-countdown style="text-align: center"></my-countdown></div>
+            <my-countdown style="text-align: center"></my-countdown>
+            <img src="images/zoo.jpg" width=600 class="center"/>
+          </div>
           <div class="fill">Page 2</div>
           <div class="fill">Page 3</div>
           <div class="fill">Page 4</div>
