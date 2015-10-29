@@ -1,6 +1,8 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-card/paper-card.html">
 <link rel="import" href="bower_components/paper-button/paper-button.html">
 <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="bower_components/iron-image/iron-image.html">
 <link rel="import" href="bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="bower_components/my-countdown/my-countdown.html">
 <script src="bower_components/moment/moment.js"></script>
@@ -90,7 +92,31 @@ A wedding website.
 
     @font-face {
       font-family: PT_Serif;
-      src: url('PT_Serif.ttf');
+      src: url('fonts/PT_Serif.ttf');
+    }
+
+
+
+
+
+
+
+    paper-card {
+      @apply(--layout-vertical);
+      @apply(--center-justified);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 16px;
+    }
+
+    .pink {
+      --paper-card-header-color: var(--paper-pink-500);
+    }
+
+    .sized {
+      width: 200px;
+      height: 200px;
     }
   </style>
   <template>
@@ -113,7 +139,14 @@ A wedding website.
           <div class="fill">
             <img src="images/zoo.jpg" width=600 class="center"/>
           </div>
-          <div class="fill">Page 2</div>
+          <div class="fill">Page 2
+            <paper-card heading="Nicole Smith" elevation="3" class="pink">
+              <iron-image class="sized" sizing="cover" src="images/nicole.jpg"></iron-image>
+              <div class="card-content">
+                Lorem ipsum dolor sit amet, nec ad conceptam interpretaris, mea ne solet repudiandae. Laudem nostrud ei vim. Sapientem consequuntur usu ad, vel etiam philosophia ex, ad quidam option quo. Sed sale integre pericula ei, rebum adipiscing ius ea.
+              </div>
+            </paper-card>
+          </div>
           <div class="fill">Page 3</div>
           <div class="fill">Page 4</div>
           <div class="fill">The wedding ceremony starts in:

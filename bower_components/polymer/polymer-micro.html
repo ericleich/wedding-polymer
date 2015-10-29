@@ -56,10 +56,10 @@ prototype = {};
 }
 var factory = desugar(prototype);
 prototype = factory.prototype;
-var options = {
-prototype: prototype,
-extends: prototype.extends
-};
+var options = { prototype: prototype };
+if (prototype.extends) {
+options.extends = prototype.extends;
+}
 Polymer.telemetry._registrate(prototype);
 document.registerElement(prototype.is, options);
 return factory;
@@ -264,7 +264,7 @@ document.registerElement('dom-module', DomModule);
 function forceDocumentUpgrade() {
 if (cePolyfill) {
 var script = document._currentScript || document.currentScript;
-var doc = script && script.ownerDocument;
+var doc = script && script.ownerDocument || document;
 if (doc) {
 CustomElements.upgradeAll(doc);
 }
@@ -576,7 +576,7 @@ debouncer.stop();
 }
 }
 });
-Polymer.version = '1.1.2';
+Polymer.version = '1.2.0';
 Polymer.Base._addFeature({
 _registerFeatures: function () {
 this._prepIs();
