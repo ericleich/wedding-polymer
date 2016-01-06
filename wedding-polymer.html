@@ -2,6 +2,7 @@
 <link rel="import" href="bower_components/paper-card/paper-card.html">
 <link rel="import" href="bower_components/paper-button/paper-button.html">
 <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="bower_components/iron-image/iron-image.html">
 <link rel="import" href="bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="bower_components/my-countdown/my-countdown.html">
@@ -29,7 +30,7 @@ A wedding website.
     }
 
     .stuff {
-      min-width: 960px;
+      width: 960px;
       background-image: url("images/background-white-0.75.png");
       display: table-cell;
     }
@@ -95,12 +96,6 @@ A wedding website.
       src: url('fonts/PT_Serif.ttf');
     }
 
-
-
-
-
-
-
     paper-card {
       @apply(--layout-vertical);
       @apply(--center-justified);
@@ -111,12 +106,18 @@ A wedding website.
     }
 
     .pink {
-      --paper-card-header-color: var(--paper-pink-500);
+      --paper-card-header-color: var(--paper-purple-500);
     }
 
     .sized {
-      width: 200px;
+      max-width: 100%;
       height: 200px;
+    }
+
+    .gallery {
+      margin: 5px;
+      width: 45%;
+      max-height: 500px;
     }
   </style>
   <template>
@@ -139,15 +140,71 @@ A wedding website.
           <div class="fill">
             <img src="images/zoo.jpg" width=600 class="center"/>
           </div>
-          <div class="fill">Page 2
+          <div class="fill layout horizontal start">
             <paper-card heading="Nicole Smith" elevation="3" class="pink">
-              <iron-image class="sized" sizing="cover" src="images/nicole.jpg"></iron-image>
+              <iron-image class="sized flex" sizing="contain" src="images/nicole.jpg"></iron-image>
               <div class="card-content">
-                Lorem ipsum dolor sit amet, nec ad conceptam interpretaris, mea ne solet repudiandae. Laudem nostrud ei vim. Sapientem consequuntur usu ad, vel etiam philosophia ex, ad quidam option quo. Sed sale integre pericula ei, rebum adipiscing ius ea.
+                <h2>How we met</h2>
+                <p>
+                  Lorem ipsum dolor sit amet, nec ad conceptam interpretaris, mea ne solet repudiandae. Laudem nostrud ei vim. Sapientem consequuntur usu ad, vel etiam philosophia ex, ad quidam option quo. Sed sale integre pericula ei, rebum adipiscing ius ea.
+                </p>
+              </div>
+            </paper-card>
+            <paper-card heading="Eric Leichtenschlag" elevation="3" class="pink">
+              <iron-image class="sized flex" sizing="contain" src="images/eric.jpg"></iron-image>
+              <div class="card-content">
+                <h2>How we met</h2>
+                <p>
+                  It was Fall 2009; I just started my junior year at the University of Florida,
+                  when I met Nicole during a game of Ultimate Frisbee. I thought she was cute, and
+                  made sure she was on my team that day. She continued to hang out with me and
+                  group of friends, watching movies in the dorms, running in the Swamp, and attending
+                  <a href="https://www.union.ufl.edu/ProgramsArtsLeisure/GatorNights">Gator Nights</a>.
+                  Every time I saw her it made me smile.
+                </p>
+                <p>
+                  We used to exchange bumper stickers on Facebook, and if you accepted the sticker it
+                  went on your wall. On Christmas, I sent her a bumper sticker that said something like
+                  "The only present I want for Christmas is you". And she accepted it! The rest is
+                  history...
+                </p>
+                <h2>The Early Days</h2>
+                <p>
+                  We became Facebook official shortly later, on January 9th, 2010. During the beginning
+                  of our relationship, we spent almost all of our time together. We loved to eat at
+                  local restaurants, and would have frequent movie nights at my dorm.
+                </p>
+                <p>
+                  On our first Valentine's Day, we took a bus to get dinner at
+                  <a href="http://www.bentocafesushi.com/">Bento Cafe<a>, saw a movie at the theater, and
+                  by that time the bus wasn't running anymore! With no Uber back then, we walked the 2+
+                  miles back to the dorm, but not before we picked up a midnight pizza! Ah, good times...
+                </p>
+                <h2>Defeating Long Distance</h2>
+                <p>
+                  After graduating from UF, I accepted a engineering position at Google in Mountain View,
+                  CA. I had a few other offers including one just an hour away from UF, but there was no
+                  chance I was going to give up Google.
+                </p>
+                <p>Nicole still has another 2 and a half years of school left. It was difficult going
+                  from seeing each other every day to seeing each other only every few months; I'm not
+                  a smoker, but I bet it feels like quitting smoking cold turkey. Some doubted we could
+                  do it. There was a fair share of crying involved (not me, of course). We heard stories
+                  of several friends who had failed long distance relationships. But here we are; we
+                  survived.
+                </p>
+                <h2>The Proposal</h2>
+                <p>
+                  TODO: 12/25/2014.
+                </p>
               </div>
             </paper-card>
           </div>
-          <div class="fill">Page 3</div>
+          <div class="fill flex">
+            <img class="gallery" src="images/gallery/holiday2015.jpg"></img>
+            <img class="gallery" src="images/eric.jpg"></img>
+            <img class="gallery" src="images/nicole.jpg"></img>
+          </div>
           <div class="fill">Page 4</div>
           <div class="fill">The wedding ceremony starts in:
             <my-countdown style="text-align: center"></my-countdown></div>
