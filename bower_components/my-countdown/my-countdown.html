@@ -131,9 +131,13 @@ A countdown timer made with Polymer
      */
     _createCountdown: function() {
       this.time = this.timer.subtract(1, 's').format('DDDHHmmss');
-      if (this.time.length < 9) {
-        document.getElementById("days0").hidden = true;
+      while (this.time.length < 9) {
+        this.time = "0" + this.time;
       }
+      if (this.time[0] == 0) {
+        this.$.days0.hidden = true;
+      }
+
       this.async(this._createCountdown, 1000);
     },
 
