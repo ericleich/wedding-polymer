@@ -6,6 +6,7 @@
 <link rel="import" href="bower_components/iron-image/iron-image.html">
 <link rel="import" href="bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="bower_components/my-countdown/my-countdown.html">
+<link rel="import" href="bower_components/wedding-map/wedding-map.html">
 <script src="bower_components/moment/moment.js"></script>
 
 <!--
@@ -133,7 +134,6 @@ A wedding website.
           <paper-tab>Gallery</paper-tab>
           <paper-tab>Accomodations</paper-tab>
           <paper-tab>Registry</paper-tab>
-          <paper-tab>Events</paper-tab>
         </paper-tabs>
 
         <iron-pages selected="0">
@@ -205,10 +205,11 @@ A wedding website.
             <img class="gallery" src="images/eric.jpg"></img>
             <img class="gallery" src="images/nicole.jpg"></img>
           </div>
-          <div class="fill">Page 4</div>
+          <div class="fill"><h1>Page 4</h1>
+            <wedding-map></wedding-map>
+          </div>
           <div class="fill">The wedding ceremony starts in:
             <my-countdown style="text-align: center"></my-countdown></div>
-          <div class="fill">Page 6</div>
         </iron-pages>
       </div>
 
