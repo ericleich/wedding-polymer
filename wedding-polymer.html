@@ -69,10 +69,6 @@ A wedding website.
       margin: 30px;
     }
 
-    iron-pages .fill {
-      /* height: 100%; */
-    }
-
     paper-tabs {
       --paper-tabs-selection-bar-color: #660066;
     }
@@ -81,7 +77,7 @@ A wedding website.
       --paper-tab-ink: #660066;
     }
 
-    .center {
+    .centerme {
       display: block;
       margin-left: auto;
       margin-right: auto;
@@ -120,15 +116,33 @@ A wedding website.
       width: 45%;
       max-height: 500px;
     }
+
+    /*
+      https://elements.polymer-project.org/guides/flex-layout
+
+      Polymer flex classes:
+      flex
+      layout (req'd for horizontal or vertical)
+      horizontal or vertical
+      center or start
+      etc.
+    */
   </style>
   <template>
     <div class="morestuff">
       <div class="table-cell lace-left"></div>
 
       <div class="stuff">
-        <img src="images/nicole-eric.png" width=500 class="center">
+        <img src="images/flowers-banner.png" class="centerme" style="margin-bottom: 10px" width=800>
+<!--
+       <div class="flex layout horizontal center">
+        <img src="images/flowers2-left.png" width=150>
+        <img src="images/nicole-eric.png" width=1 class="flex">
+        <img src="images/flowers2-right.png" width=150>
+      </div>
+-->
 
-        <paper-tabs class="transparent-teal" selected="0" style="margin-bottom: 1px">
+        <paper-tabs class="transparent-teal" selected="0" align-bottom style="margin-bottom: 1px">
           <paper-tab>Home</paper-tab>
           <paper-tab>Our Story</paper-tab>
           <paper-tab>Gallery</paper-tab>
@@ -137,10 +151,10 @@ A wedding website.
         </paper-tabs>
 
         <iron-pages selected="0">
-          <div class="fill">
-            <img src="images/zoo.jpg" width=600 class="center"/>
+          <div>
+            <img src="images/zoo.jpg" width=600 class="centerme"/>
           </div>
-          <div class="fill layout horizontal start">
+          <div class="layout horizontal start">
             <paper-card heading="Nicole Smith" elevation="3" class="pink">
               <iron-image class="sized flex" sizing="contain" src="images/nicole.jpg"></iron-image>
               <div class="card-content">
@@ -200,15 +214,16 @@ A wedding website.
               </div>
             </paper-card>
           </div>
-          <div class="fill flex">
+          <div class="flex">
             <img class="gallery" src="images/gallery/holiday2015.jpg"></img>
             <img class="gallery" src="images/eric.jpg"></img>
             <img class="gallery" src="images/nicole.jpg"></img>
           </div>
-          <div class="fill"><h1>Page 4</h1>
+          <div>
+            <h1>Page 4</h1>
             <wedding-map></wedding-map>
           </div>
-          <div class="fill">The wedding ceremony starts in:
+          <div>The wedding ceremony starts in:
             <my-countdown style="text-align: center"></my-countdown></div>
         </iron-pages>
       </div>
