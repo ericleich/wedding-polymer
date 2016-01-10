@@ -43,6 +43,6 @@
     "commit": "3144145f93eba7208b55c4c9be5cf3d861c2a736"
   },
   "_source": "git://github.com/PolymerElements/paper-card.git",
-  "_target": "~1.0.7",
+  "_target": "~1.0.8",
   "_originalSource": "PolymerElements/paper-card"
 }
