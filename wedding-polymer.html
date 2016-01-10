@@ -30,6 +30,10 @@ A wedding website.
       font-family: PT_Serif;
     }
 
+    h2 {
+      font-size: 20px;
+    }
+
     .stuff {
       width: 960px;
       background-image: url("images/background-white-0.75.png");
@@ -43,7 +47,7 @@ A wedding website.
 
     paper-tabs.transparent-teal {
       background-color: transparent;
-      font-size: 16px;
+      font-size: 20px;
       font-weight: bold;
       color: #660066;
     }
@@ -91,6 +95,13 @@ A wedding website.
     @font-face {
       font-family: PT_Serif;
       src: url('fonts/PT_Serif.ttf');
+    }
+
+    .home-intro {
+      margin-bottom: 10px;
+      padding: 10px;
+      font-size: 20px;
+      text-align: justify;
     }
 
     .about {
@@ -143,22 +154,36 @@ A wedding website.
         <img src="images/flowers-banner.png" class="centerme" style="margin-bottom: 10px" width=800>
 
         <paper-tabs class="transparent-teal" selected="0" align-bottom style="margin-bottom: 1px">
-          <paper-tab>Home</paper-tab>
-          <paper-tab>Our Story</paper-tab>
-          <paper-tab>Gallery</paper-tab>
-          <paper-tab>Accomodations</paper-tab>
-          <paper-tab>Registry</paper-tab>
+          <paper-tab>HOME</paper-tab>
+          <paper-tab>OUR STORY</paper-tab>
+          <paper-tab>GALLERY</paper-tab>
+          <paper-tab>ACCOMODATIONS</paper-tab>
+          <paper-tab>REGISTRY</paper-tab>
         </paper-tabs>
 
         <iron-pages selected="0">
           <div> <!-- Home -->
-            <img src="images/zoo.jpg" width=600 class="centerme"/>
+            <paper-card elevation="3" class="home-intro">
+              <p>
+                Welcome to our wedding website! We are looking forward to celebrating our big day
+                with <b>YOU</b> -- our friends and family! April 8th, 2016 will be a day that we forever
+                hold in our hearts, so we hope you are able to make it and share in the love!
+              </p>
+              <p>
+                You can find information relating to our upcoming wedding celebration on this site.
+                Use the tabs above to explore hotel accommodations, registry information, and more.
+                This website was built using our combined creative talents, so we hope you enjoy!
+              </p>
+            </paper-card>
+            <paper-card elevation="3">
+              <img src="images/homepage.jpg" style="width: 100%" class="centerme"/>
+            </paper-card>
           </div>
           <div class="about"> <!-- Our story -->
             <paper-card heading="Nicole Smith" elevation="3" class="about-card">
               <img class="sized" src="images/nicole.jpg"></img>
               <div class="card-content">
-                <h2>How We Met</h2>
+                <h2>HOW WE MET</h2>
                 <p>
                   It was my freshmen year at the University of Florida. I didn't know too many
                   people, just a few new kids I had met in my classes and a handful of old high
@@ -179,7 +204,7 @@ A wedding website.
                   sticker on Facebook telling me that he liked me. He asked me out on an official
                   date a few days later and the love story began!
                 </p>
-                <h2>The Early Days</h2>
+                <h2>THE EARLY DAYS</h2>
                 <p>
                   Since we lived in the same building, I saw Eric every day. We worked out together,
                   ate our meals together, and Eric would even help me with homework if I was stuck!
@@ -187,7 +212,7 @@ A wedding website.
                   us. Eric would make french toast and bacon and I would make home fries. To this
                   day, Eric and I cook breakfast together at least once each weekend.
                 </p>
-                <h2>Defeating Long Distance</h2>
+                <h2>DEFEATING LONG DISTANCE</h2>
                 <p>
                   At the end of Eric's senior year, he received a job offer from Google located in
                   Mountain View, California. I was heartbroken thinking that our relationship might
@@ -202,7 +227,7 @@ A wedding website.
                   communication, Eric and I might have grown apart in some way, but my fears were
                   misplaced and we quickly fell right back into our old swing.
                 </p>
-                <h2>The Proposal</h2>
+                <h2>THE PROPOSAL</h2>
                 <p>
                   I said yes!!! I had just graduated from UF and was home for the holidays. In a
                   few short months I would be permanently relocating to the Bay Area. Eric came
@@ -221,7 +246,7 @@ A wedding website.
             <paper-card heading="Eric Leichtenschlag" elevation="3" class="about-card">
               <img class="sized" src="images/eric.jpg"></img>
               <div class="card-content">
-                <h2>How We Met</h2>
+                <h2>HOW WE MET</h2>
                 <p>
                   It was Fall 2009; I just started my junior year at the University of Florida,
                   when I met Nicole during a game of Ultimate Frisbee. I thought she was cute, and
@@ -236,7 +261,7 @@ A wedding website.
                   "The only present I want for Christmas is you". And she accepted it! The rest is
                   history...
                 </p>
-                <h2>The Early Days</h2>
+                <h2>THE EARLY DAYS</h2>
                 <p>
                   We became Facebook official shortly later, on January 9th, 2010. During the beginning
                   of our relationship, we spent almost all of our time together. We loved to eat at
@@ -248,7 +273,7 @@ A wedding website.
                   by that time the bus wasn't running anymore! With no Uber back then, we walked the 2+
                   miles back to the dorm, but not before we picked up a midnight pizza! Ah, good times...
                 </p>
-                <h2>Defeating Long Distance</h2>
+                <h2>DEFEATING LONG DISTANCE</h2>
                 <p>
                   After graduating from UF, I accepted a engineering position at Google in Mountain View,
                   CA. I had a few other offers including one just an hour away from UF, but there was no
@@ -261,7 +286,7 @@ A wedding website.
                   of several friends who had failed long distance relationships. But here we are; we
                   survived.
                 </p>
-                <h2>The Proposal</h2>
+                <h2>THE PROPOSAL</h2>
                 <p>
                   TODO: 12/25/2014.
                 </p>
@@ -272,6 +297,7 @@ A wedding website.
             <img class="gallery" src="images/gallery/holiday2015.jpg"></img>
             <img class="gallery" src="images/eric.jpg"></img>
             <img class="gallery" src="images/nicole.jpg"></img>
+            <img class="gallery" src="images/gallery/zoo.jpg"></img>
           </div>
           <div> <!-- Accommodations -->
             <h1>Page 4</h1>
