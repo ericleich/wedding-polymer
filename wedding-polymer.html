@@ -70,7 +70,9 @@ A wedding website.
 
     iron-pages {
       /* height: 1000px; */
-      margin: 30px;
+      margin-top: 10px;
+      margin-left: 30px;
+      margin-right: 30px;
     }
 
     paper-tabs {
@@ -111,19 +113,34 @@ A wedding website.
     }
 
     .about-card {
-      max-width: 400px;
+      width: 45%;
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 16px;
+    }
+
+    .about-card-name {
       --paper-card-header-color: var(--paper-purple-500);
+      font-size: 24px;
+      text-align: center;
+      padding-bottom: 10px;
+    }
+
+    .about-card paper-card {
+      width: 100%;
+      padding-left: 10px;
+      padding-right: 10px;
+      box-sizing: border-box;
+      margin-bottom: 10px; 
     }
 
     .sized {
       display: block;
-      max-width: 90%;
-      max-height: 200px;
+      max-width: 100%;
+      max-height: 300px;
       margin-left: auto;
       margin-right: auto;
+      box-sizing: border-box;
     }
 
     .gallery {
@@ -157,12 +174,15 @@ A wedding website.
           <paper-tab>HOME</paper-tab>
           <paper-tab>OUR STORY</paper-tab>
           <paper-tab>GALLERY</paper-tab>
-          <paper-tab>ACCOMODATIONS</paper-tab>
+          <paper-tab>WEDDING DETAILS</paper-tab>
           <paper-tab>REGISTRY</paper-tab>
         </paper-tabs>
 
         <iron-pages selected="0">
           <div> <!-- Home -->
+            <paper-card elevation="3" style="margin-bottom: 10px">
+              <img src="images/homepage.jpg" style="width: 100%" class="centerme"/>
+            </paper-card>
             <paper-card elevation="3" class="home-intro">
               <p>
                 Welcome to our wedding website! We are looking forward to celebrating our big day
@@ -175,14 +195,17 @@ A wedding website.
                 This website was built using our combined creative talents, so we hope you enjoy!
               </p>
             </paper-card>
-            <paper-card elevation="3">
-              <img src="images/homepage.jpg" style="width: 100%" class="centerme"/>
-            </paper-card>
+
           </div>
           <div class="about"> <!-- Our story -->
-            <paper-card heading="Nicole Smith" elevation="3" class="about-card">
-              <img class="sized" src="images/nicole.jpg"></img>
-              <div class="card-content">
+            <div class="about-card">
+              <!--<paper-card elevation="3" >
+                Nicole Smith
+              </paper-card>-->
+              <paper-card heading="Nicole Smith" elevation="3" class="about-card-name">
+                <img class="sized" src="images/nicole.jpg"></img>
+              </paper-card>
+              <paper-card elevation="3">
                 <h2>HOW WE MET</h2>
                 <p>
                   It was my freshmen year at the University of Florida. I didn't know too many
@@ -204,6 +227,8 @@ A wedding website.
                   sticker on Facebook telling me that he liked me. He asked me out on an official
                   date a few days later and the love story began!
                 </p>
+              </paper-card>
+              <paper-card elevation="3">
                 <h2>THE EARLY DAYS</h2>
                 <p>
                   Since we lived in the same building, I saw Eric every day. We worked out together,
@@ -212,6 +237,8 @@ A wedding website.
                   us. Eric would make french toast and bacon and I would make home fries. To this
                   day, Eric and I cook breakfast together at least once each weekend.
                 </p>
+              </paper-card>
+              <paper-card elevation="3">
                 <h2>DEFEATING LONG DISTANCE</h2>
                 <p>
                   At the end of Eric's senior year, he received a job offer from Google located in
@@ -227,6 +254,8 @@ A wedding website.
                   communication, Eric and I might have grown apart in some way, but my fears were
                   misplaced and we quickly fell right back into our old swing.
                 </p>
+              </paper-card>
+              <paper-card elevation="3">
                 <h2>THE PROPOSAL</h2>
                 <p>
                   I said yes!!! I had just graduated from UF and was home for the holidays. In a
@@ -241,11 +270,13 @@ A wedding website.
                   immediately. It was the perfect proposal. I was so happy that Eric knew to share
                   this moment with my family. It is a day and feeling that I will never forget.
                 </p>
-              </div>
-            </paper-card>
-            <paper-card heading="Eric Leichtenschlag" elevation="3" class="about-card">
-              <img class="sized" src="images/eric.jpg"></img>
-              <div class="card-content">
+              </paper-card>
+            </div>
+            <div class="about-card">
+               <paper-card heading="Eric Leichtenschlag" elevation="3" class="about-card-name">
+                <img class="sized" src="images/eric.jpg"></img>
+              </paper-card>
+              <paper-card elevation="3">
                 <h2>HOW WE MET</h2>
                 <p>
                   It was Fall 2009; I just started my junior year at the University of Florida,
@@ -261,6 +292,8 @@ A wedding website.
                   "The only present I want for Christmas is you". And she accepted it! The rest is
                   history...
                 </p>
+              </paper-card>
+              <paper-card elevation="3">
                 <h2>THE EARLY DAYS</h2>
                 <p>
                   We became Facebook official shortly later, on January 9th, 2010. During the beginning
@@ -273,6 +306,8 @@ A wedding website.
                   by that time the bus wasn't running anymore! With no Uber back then, we walked the 2+
                   miles back to the dorm, but not before we picked up a midnight pizza! Ah, good times...
                 </p>
+              </paper-card>
+              <paper-card elevation="3">
                 <h2>DEFEATING LONG DISTANCE</h2>
                 <p>
                   After graduating from UF, I accepted a engineering position at Google in Mountain View,
@@ -286,12 +321,14 @@ A wedding website.
                   of several friends who had failed long distance relationships. But here we are; we
                   survived.
                 </p>
+              </paper-card>
+              <paper-card elevation="3">
                 <h2>THE PROPOSAL</h2>
                 <p>
                   TODO: 12/25/2014.
                 </p>
-              </div>
-            </paper-card>
+              </paper-card>
+            </div>
           </div>
           <div> <!-- Gallery -->
             <img class="gallery" src="images/gallery/holiday2015.jpg"></img>
