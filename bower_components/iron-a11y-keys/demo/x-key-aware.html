@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../../polymer/polymer.html">
 <link rel="import" href="../../paper-styles/color.html">
-<link rel="import" href="../iron-a11y-keys-behavior.html">
+<link rel="import" href="../iron-a11y-keys.html">
 
 <dom-module id="x-key-aware">
   <style>
@@ -37,23 +37,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </style>
   <template>
     <h4>Press any of these keys</h4>
-    <input type="checkbox" checked="{{preventDefault::change}}"> prevent default = {{preventDefault}}
-    <p class="keys">
+    <span class="keys">
       <template is="dom-repeat" items="[[boundKeys]]">
         <span>{{item}}</span>
       </template>
-    </p>
-    <pre>[[pressed]]</pre>
+    </span>
+    <iron-a11y-keys
+      id="keys"
+      keys="* pageup pagedown left right down up shift+a alt+a home end space enter"
+      target="[[target]]"
+      on-keys-pressed="_updatePressed">
+    </iron-a11y-keys>
+    <pre id="output">[[pressed]]</pre>
   </template>
 </dom-module>
 
 <script>
   Polymer({
     is: 'x-key-aware',
-
-    behaviors: [
-      Polymer.IronA11yKeysBehavior
-    ],
 
     properties: {
       pressed: {
@@ -63,19 +64,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       boundKeys: {
-        type: Array,
-        value: function() {
-          return Object.keys(this.keyBindings).join(' ').split(' ');
-        }
+        type: Array
       },
 
-      preventDefault: {
-        type: Boolean,
-        value: true,
-        notify: true
-      },
-
-      keyEventTarget: {
+      target: {
         type: Object,
         value: function() {
           return document.body;
@@ -83,19 +75,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     },
 
-    keyBindings: {
-      '* pageup pagedown left right down up home end space enter @ ~ " $ ? ! \\ + : # backspace': '_updatePressed',
-      'a': '_updatePressed',
-      'shift+a alt+a': '_updatePressed',
-      'shift+tab shift+space': '_updatePressed'
+    ready: function() {
+      this.boundKeys = this.$.keys.keys.split(' ');
     },
 
     _updatePressed: function(event) {
       console.log(event.detail);
 
-      if (this.preventDefault) {
-        event.preventDefault();
-      }
       this._setPressed(
         this.pressed + event.detail.combo + ' pressed!\n'
       );
