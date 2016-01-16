@@ -110,7 +110,6 @@ A wedding website.
     .about {
        @apply(--layout-horizontal);
        @apply(--layout-start);
-
     }
 
     .about-card {
@@ -454,13 +453,28 @@ A wedding website.
   Polymer({
     is: 'wedding-polymer',
     ready: function() {
-      console.log("ready");
       var tabs = document.querySelector('paper-tabs');
       var pages = document.querySelector('iron-pages');
 
+      // Deault to tab based on hash.
+      var tabNames = ["home", "story", "details", "gallery", "registry"];
+      var hash = window.location.hash.substring(1);
+      var tabIndex = tabNames.indexOf(hash);
+      if (tabIndex > 0) {
+        pages.selected = tabs.selected = tabIndex;
+      }
+
+      // When changing the tab, change the page.
       tabs.addEventListener('iron-select', function() {
+        if (tabs.selected == 0) {
+          // Nicole's requirement to remove the hash if on the home page.
+          // http://stackoverflow.com/questions/1397329/how-to-remove-the-hash-from-window-location-with-javascript-without-page-refresh#answer-5298684
+          history.pushState("", document.title, window.location.pathname + window.location.search);
+        } else {
+          window.location.hash = "#" + tabNames[tabs.selected];
+        }
         pages.selected = tabs.selected;
       });
-    }
+    },
   });
 </script>
