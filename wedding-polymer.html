@@ -141,10 +141,7 @@ A wedding website.
 
     .sized {
       display: block;
-      max-width: 100%;
-      max-height: 300px;
-      margin-left: auto;
-      margin-right: auto;
+      width: 100%;
       box-sizing: border-box;
     }
 
@@ -183,8 +180,8 @@ A wedding website.
         <paper-tabs class="transparent-teal" selected="0" align-bottom style="margin-bottom: 1px">
           <paper-tab>HOME</paper-tab>
           <paper-tab>OUR STORY</paper-tab>
-          <paper-tab>GALLERY</paper-tab>
           <paper-tab>WEDDING DETAILS</paper-tab>
+          <paper-tab>GALLERY</paper-tab>
           <paper-tab>REGISTRY</paper-tab>
         </paper-tabs>
 
@@ -381,12 +378,6 @@ A wedding website.
               </paper-card>
             </div>
           </div>
-          <div> <!-- Gallery -->
-            <img class="gallery" src="images/gallery/holiday2015.jpg"></img>
-            <img class="gallery" src="images/eric.jpg"></img>
-            <img class="gallery" src="images/nicole.jpg"></img>
-            <img class="gallery" src="images/gallery/zoo.jpg"></img>
-          </div>
           <div> <!-- Wedding Details -->
             <h1>The Details</h1>
             Our special day is April 8, 2016. We are closing in on it!
@@ -418,7 +409,7 @@ A wedding website.
 
             <wedding-map></wedding-map>
           </div>
-          <div> <!-- Registry -->
+          <div> <!-- Gallery -->
             <wedding-gallery>
               <img data-original="images/gallery/engagement/Photo1.jpg" data-index='s1' src="images/gallery/engagement/Photo1.jpg">
               <img data-original="images/gallery/engagement/Photo2.jpg" data-index='s2' src="images/gallery/engagement/Photo2.jpg">
@@ -445,7 +436,10 @@ A wedding website.
               <img data-original="images/gallery/engagement/Photo23.jpg" data-index='s23' src="images/gallery/engagement/Photo23.jpg">
               <img data-original="images/gallery/engagement/Photo24.jpg" data-index='s24' src="images/gallery/engagement/Photo24.jpg">
               <img data-original="images/gallery/engagement/Photo25.jpg" data-index='s25' src="images/gallery/engagement/Photo25.jpg">
-            </wedding-gallery>   
+            </wedding-gallery>
+          </div>
+          <div> <!-- Registry -->
+            There is none! We want $$$$!!!!!
           </div>
         </iron-pages>
       </div>
