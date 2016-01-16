@@ -100,6 +100,11 @@ A wedding website.
       src: url('fonts/PT_Serif.ttf');
     }
 
+    paper-card {
+      /* Default is inline-block, but for some reason it pushes the homepage card down about 10px. */
+      display: block;
+    }
+
     .home-intro {
       margin-bottom: 10px;
       padding: 10px;
@@ -110,12 +115,11 @@ A wedding website.
     .about {
        @apply(--layout-horizontal);
        @apply(--layout-start);
+       @apply(--layout-justified);
     }
 
     .about-card {
-      width: 45%;
-      margin-left: auto;
-      margin-right: auto;
+      width: 48%;
       margin-bottom: 16px;
     }
 
@@ -185,7 +189,7 @@ A wedding website.
         </paper-tabs>
 
         <iron-pages selected="0">
-          <div> <!-- Home -->
+          <div class="home"> <!-- Home -->
             <paper-card elevation="3" style="margin-bottom: 10px">
               <img src="images/homepage.jpg" style="width: 100%" class="centerme"/>
             </paper-card>
