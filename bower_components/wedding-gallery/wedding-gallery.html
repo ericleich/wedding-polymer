@@ -15,20 +15,11 @@
       top:0;
       left: 0;
     }    
-
-    .modal-dialog {
-      max-width: 900px;
-      padding-left: 5%;
-      padding-right: 5%;
-      right: auto;
-      width: auto;
-      margin: 30px auto;
-    }
     
     .modal-header {
       border-bottom: 1px solid #e5e5e5;
       min-height: 16.43px;
-      padding: 15px;
+      padding: 5px;
       background: #fff;
     }
     
@@ -36,7 +27,7 @@
       background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
       border: 0 none;
       cursor: pointer;
-      padding: 0;
+      padding: 10px;
       float: right;
     }
     
@@ -45,17 +36,23 @@
       overflow: hidden;
       position: relative;
       text-align: center;
-      max-height: 90%;
+      @apply(--layout-flex);
     }
     
-    .modal-body img {
+    .modal-content {
       width: 100%;
       height: 100%;
+      padding: 2%;
+      box-sizing: border-box;
+      @apply(--layout-vertical);
     }
         
     .modal-img {
-      width: 100%;
+      position: absolute;
       height: 100%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      /* http://stackoverflow.com/questions/1776915/how-to-center-absolute-element-in-div#answer-23384995 */
     }
     
     .btn-default {
@@ -112,9 +109,10 @@
                   var images = Polymer.dom(this).querySelectorAll('img');
                   var container = this.$.links;
 
-                  for (var img in images) {
-                    images[img].addEventListener('click', this.load_popup.bind(this));
-                    container.appendChild(images[img]);
+                  for (var imageIndex in images) {
+                    var img = images[imageIndex];
+                    img.addEventListener('click', this.load_popup.bind(this));
+                    container.appendChild(images[imageIndex]);
                   }
                 },
                 load_popup: function(e, detail, sender) {
@@ -169,14 +167,13 @@
                   console.log(detail.keyboardEvent.keyCode);
                   switch(detail.keyboardEvent.keyCode) {
                     case 27: // ESC
-                      console.log("escape!");
                       this.close();
                       break;
                     case 37: // Left
-                      console.log("left!");
+                      this.prev();
                       break;
                     case 39: // Right
-                      console.log("right!");
+                      this.next();
                       break;
                   }
                 },
@@ -193,21 +190,19 @@
           <div id="links" name="links"></div>
       </div>
 
-
       <!-- The modal dialog, which will be used to wrap the lightbox content -->
       <iron-a11y-keys id="keylistener" keys="[[boundKeys]]" on-keys-pressed="keypressed">
-      <div id="modalOverlay" class="modal fade">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <a class="close"><button type="button" class="close" aria-hidden="true" on-click="close" >X</button></a>
-              <h4 class="modal-title"></h4>
-            </div>
-            <div class="modal-body next"><img class='modal-img'  /></div>
-            <div class="modal-footer">
-              <button id="previous" type="button" class="btn btn-default pull-left prev" on-click="prev">Previous</button>
-              <button id="next" type="button" class="btn btn-default next" on-click="next">Next</button>
-            </div>
+      <div id="modalOverlay" class="modal fade" on-click="next">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" aria-hidden="true" on-click="close" >X</button>
+          </div>
+          <div class="modal-body">
+            <img class="modal-img"/>
+          </div>
+          <div class="modal-footer">
+            <button id="previous" type="button" class="btn btn-default pull-left prev" on-click="prev">Previous</button>
+            <button id="next" type="button" class="btn btn-default next" on-click="next">Next</button>
           </div>
         </div>
       </div>
