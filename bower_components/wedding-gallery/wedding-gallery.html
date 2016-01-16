@@ -3,8 +3,13 @@
 
 <dom-module id="wedding-gallery" >
 <style>
+    #links {
+      text-align: center;
+    }
+
     .modal {
       display: none;
+      text-align: center;
       width: 100%;
       height: 100%;
       overflow: hidden;
@@ -14,74 +19,39 @@
       z-index: 999999;
       top:0;
       left: 0;
-    }    
-    
-    .modal-header {
-      border-bottom: 1px solid #e5e5e5;
-      min-height: 16.43px;
-      padding: 5px;
-      background: #fff;
     }
-    
-    button.close {
-      background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-      border: 0 none;
-      cursor: pointer;
-      padding: 10px;
-      float: right;
-    }
-    
-    .modal-body {
-      cursor: pointer;
-      overflow: hidden;
+
+    .modal-img-wrapper {
+      display: inline-block;
       position: relative;
-      text-align: center;
-      @apply(--layout-flex);
-    }
-    
-    .modal-content {
-      width: 100%;
       height: 100%;
-      padding: 2%;
-      box-sizing: border-box;
-      @apply(--layout-vertical);
+    }
+
+    button.close {
+/*      background: rgba(0, 0, 0, 0) none repeat scroll 0 0;*/
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      cursor: pointer;
+      background-color: rgba(0,0,0,0.25);
+      color: white;
+      border: 0 none;
+      padding: 10px;
     }
         
     .modal-img {
-      position: absolute;
+      display: block;
       height: 100%;
-      left: 50%;
-      transform: translate(-50%, 0);
-      /* http://stackoverflow.com/questions/1776915/how-to-center-absolute-element-in-div#answer-23384995 */
-    }
-    
-    .btn-default {
-      background-color: #fff;
-      border-color: #ccc;
-      color: #333;
-      border: 1px solid #6d6969;
-      padding: 5px;
-    }
-    
-    #previous {
-      float: left;
-    }
-    
-    #next {
-      float: right;
     }
 
-    #links {
-      text-align: center;
+    .modal-img-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
 
-    .modal-footer {
-      float: left;
-      width: 96%;
-      background: #fff none repeat scroll 0 0;
-      padding: 10px 2%;
-    }
-    
 </style>
   <script>
     HTMLImports.whenReady(function () {
@@ -120,13 +90,14 @@
                   image_length = links.getElementsByTagName('img').length;
 
                   var image_url = e.target.getAttribute('data-original');
-                  var modal_body = document.getElementsByClassName("modal-body")[0];
-                  var modal_img = modal_body.getElementsByTagName('img')[0];
+                  var modal_img = this.$.modalImg;
                   modal_img.setAttribute("src", image_url);
-                  var modal = document.getElementsByClassName("modal")[0];
-                  modal.style.display = 'block';
 
+                  // Update image index.
                   current_index = parseInt(e.target.getAttribute('data-index').replace("s", ""));
+
+                  // Present the overlay.
+                  this.$.modalOverlay.style.display = 'block';
 
                   // Add a target to the key listener when the popup loads.
                   this.$.keylistener.target = document.body;
@@ -140,8 +111,7 @@
                   }
                   var current_image = document.querySelectorAll("[data-index='s" + current_index + "']");
                   image_url = current_image[0].getAttribute('data-original');
-                  var modal_body = document.getElementsByClassName("modal-body")[0];
-                  var modal_img = modal_body.getElementsByTagName('img')[0];
+                  var modal_img = this.$.modalImg;
                   modal_img.setAttribute("src", image_url);
                 },
                 prev: function() {
@@ -151,13 +121,12 @@
                   }
                   var current_image = document.querySelectorAll("[data-index='s" + current_index + "']");
                   image_url = current_image[0].getAttribute('data-original');
-                  var modalbody = document.getElementsByClassName("modal-body")[0];
-                  var modal_img = modalbody.getElementsByTagName('img')[0];
+                  var modal_img = this.$.modalImg;
                   modal_img.setAttribute("src", image_url);
                 },
                 close: function () {
-                  var modal = document.getElementsByClassName("modal")[0];
-                  modal.style.display = "none";
+                  // Hide the overlay.
+                  this.$.modalOverlay.style.display = "none";
 
                   // Remove the key listener on the body. Must set to some node.
                   this.$.keylistener.target = this.$.keylistener;
@@ -191,19 +160,14 @@
 
       <!-- The modal dialog, which will be used to wrap the lightbox content -->
       <iron-a11y-keys id="keylistener" keys="[[boundKeys]]" on-keys-pressed="keypressed">
-      <div id="modalOverlay" class="modal fade" on-click="next">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" aria-hidden="true" on-click="close" >X</button>
+      <div id="modalOverlay" class="modal" on-click="next">
+          <div class="modal-img-wrapper">
+            <img id="modalImg" class="modal-img"/>
+              <h2>Image Name</h2>
+            <div class="modal-img-overlay">
+              <button class="close">X</button>
+            </div>
           </div>
-          <div class="modal-body">
-            <img class="modal-img"/>
-          </div>
-          <div class="modal-footer">
-            <button id="previous" type="button" class="btn btn-default pull-left prev" on-click="prev">Previous</button>
-            <button id="next" type="button" class="btn btn-default next" on-click="next">Next</button>
-          </div>
-        </div>
       </div>
     </div> 
   </template>
