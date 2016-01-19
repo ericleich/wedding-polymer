@@ -33,6 +33,42 @@
       right: 0px;
       top: 0px;
       cursor: pointer;
+      background-color: rgba(0,0,0,0.4);
+      color: white;
+      border: 0 none;
+      padding: 10px;
+      font-size: 20pt;
+      font-weight: bold;
+      font-family: Arial;
+
+    }
+
+    img.left {
+      position: absolute;
+      /* Center vertically. */
+      top: 0;
+      bottom: 0;
+      margin-top: auto;
+      margin-bottom: auto;
+
+      left: 0;
+      cursor: pointer;
+      background-color: rgba(0,0,0,0.4);
+      color: white;
+      border: 0 none;
+      padding: 10px;
+    }
+
+    img.right {
+      position: absolute;
+      /* Center vertically. */
+      top: 0;
+      bottom: 0;
+      margin-top: auto;
+      margin-bottom: auto;
+
+      right: 0;
+      cursor: pointer;
       background-color: rgba(0,0,0,0.25);
       color: white;
       border: 0 none;
@@ -104,7 +140,7 @@
 
                   return false;
                 },
-                next: function() {
+                next: function(event) {
                   current_index = current_index + 1;
                   if(current_index == (image_length + 1) ) {
                     current_index = 1;
@@ -160,12 +196,14 @@
 
       <!-- The modal dialog, which will be used to wrap the lightbox content -->
       <iron-a11y-keys id="keylistener" keys="[[boundKeys]]" on-keys-pressed="keypressed">
-      <div id="modalOverlay" class="modal" on-click="next">
+      <div id="modalOverlay" class="modal">
           <div class="modal-img-wrapper">
             <img id="modalImg" class="modal-img"/>
               <h2>Image Name</h2>
             <div class="modal-img-overlay">
               <button class="close" on-click="close">X</button>
+              <img src="images/left-arrow.png" class="left" on-click="prev"/>
+              <img src="images/right-arrow.png" class="right" on-click="next"/>
             </div>
           </div>
       </div>
