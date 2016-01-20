@@ -3,7 +3,7 @@
 
 <dom-module id="wedding-map">
   <template>
-    <google-map style="height:600px" zoom="17" fit-to-markers click-events="true" on-google-map-click="mapClicked">
+    <google-map id="map" style="height:600px" zoom="17" fit-to-markers click-events="true" on-google-map-click="mapClicked">
       <google-map-marker latitude="25.7478254" longitude="-80.175637" icon="images/map/wedding.png">
         <h1>This is The Rusty Pelican!</h1>
         <p style="color:red">You can put any html in here</p>
@@ -25,10 +25,19 @@
   <script>
     Polymer({
       is: "wedding-map",
+      ready: function() {
+        this.$.map.additionalMapOptions = {
+            scrollwheel: false,
+            mapTypeId: "roadmap"
+        };
+      },
       mapClicked: function(e) {
-          console.log('click event!');
-          console.log(e.detail.latLng); // prints the coordinates clicked
-        }
+        console.log('click event!');
+        console.log(e.detail.latLng); // prints the coordinates clicked
+      },
+      resize: function() {
+        this.$.map.resize();
+      },
     });
   </script>
 </dom-module>

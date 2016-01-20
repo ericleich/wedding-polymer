@@ -2,6 +2,7 @@
 <link rel="import" href="bower_components/paper-card/paper-card.html">
 <link rel="import" href="bower_components/paper-button/paper-button.html">
 <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="bower_components/iron-collapse/iron-collapse.html">
 <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="bower_components/iron-image/iron-image.html">
 <link rel="import" href="bower_components/iron-pages/iron-pages.html">
@@ -148,6 +149,27 @@ A wedding website.
       box-sizing: border-box;
     }
 
+    .details paper-card {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .details-header {
+      @apply(--layout-horizontal);
+      @apply(--layout-center);
+    }
+
+    .details-header img {
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .details-header span {
+      font-size: 24pt;
+      font-weight: bold;
+    }
+
     .gallery {
       margin: 5px;
       width: 45%;
@@ -178,7 +200,7 @@ A wedding website.
       <div class="table-cell lace-left"></div>
 
       <div class="stuff">
-        <img src="images/banner.png" class="centerme" style="margin-bottom: 10px" width=800>
+        <img src="images/banner2.png" class="centerme" style="margin-bottom: 10px" width=800>
         <img src="images/flowers-banner.png" class="centerme" style="margin-bottom: 10px" width=800>
 
         <paper-tabs class="transparent-teal" selected="0" align-bottom style="margin-bottom: 1px">
@@ -379,36 +401,59 @@ A wedding website.
               </paper-card>
             </div>
           </div>
-          <div> <!-- Wedding Details -->
-            <h1>The Details</h1>
-            Our special day is April 8, 2016. We are closing in on it!
-            <my-countdown style="text-align: center"></my-countdown>
+          <div class="details"> <!-- Wedding Details -->
+            <paper-card elevation="3">
+              <div class="details-header">
+                <img src="images/map/eric.jpg" on-click="toggle" data-toggle="#collapse-who">
+                <span>Who</span>
+              </div>
+              <iron-collapse id="collapse-who">
+                Some stuff
+              </iron-collapse>
+            </paper-card>
+            <paper-card elevation="3">
+              <div class="details-header">
+                <img src="images/map/eric.jpg" on-click="toggle" data-toggle="#collapse-when">
+                <span>When</span>
+              </div>
+              <iron-collapse id="collapse-when">
+                Our special day is April 8, 2016. We are closing in on it!
+                <my-countdown style="text-align: center"></my-countdown>
 
-            <h2>Schedule</h2>
-            <table border=1>
-              <tr>
-                <th>Event</th>
-                <th>Time</th>
-              </tr>
-              <tr>
-                <td>Arrive at Rusty Pelican</td>
-                <td>6:00</td>
-              </tr>
-              <tr>
-                <td>Ceremony</td>
-                <td>6:30 - 7:00</td>
-              </tr>
-              <tr>
-                <td>Cocktails</td>
-                <td>7:00 - 7:45</td>
-              </tr>
-              <tr>
-                <td>Reception</td>
-                <td>7:45 - 11:00</td>
-              </tr>
-            </table>
-
-            <wedding-map></wedding-map>
+                <h2>Schedule</h2>
+                <table border=1>
+                  <tr>
+                    <th>Event</th>
+                    <th>Time</th>
+                  </tr>
+                  <tr>
+                    <td>Arrive at Rusty Pelican</td>
+                    <td>6:00</td>
+                  </tr>
+                  <tr>
+                    <td>Ceremony</td>
+                    <td>6:30 - 7:00</td>
+                  </tr>
+                  <tr>
+                    <td>Cocktails</td>
+                    <td>7:00 - 7:45</td>
+                  </tr>
+                  <tr>
+                    <td>Reception</td>
+                    <td>7:45 - 11:00</td>
+                  </tr>
+                </table>
+              </iron-collapse>
+            </paper-card>
+            <paper-card elevation="3">
+              <div class="details-header">
+                <img src="images/map/eric.jpg" on-click="toggleAndResize" data-toggle="#collapse-where">
+                <span>Where</span>
+              </div>
+              <iron-collapse id="collapse-where">
+                <wedding-map id="weddingMap"></wedding-map>
+              </iron-collapse>
+            </paper-card>
           </div>
           <div> <!-- Gallery -->
             <wedding-gallery>
@@ -447,35 +492,49 @@ A wedding website.
       <div class="table-cell lace-right"></div>
     </div>
   </template>
+  <script>
+    Polymer({
+      is: 'wedding-polymer',
+      ready: function() {
+        var tabs = document.querySelector('paper-tabs');
+        var pages = document.querySelector('iron-pages');
+
+        // Deault to tab based on hash.
+        var tabNames = ["home", "story", "details", "gallery", "registry"];
+        var hash = window.location.hash.substring(1);
+        var tabIndex = tabNames.indexOf(hash);
+        if (tabIndex > 0) {
+          pages.selected = tabs.selected = tabIndex;
+        }
+
+        // When changing the tab, change the page.
+        tabs.addEventListener('iron-select', function() {
+          if (tabs.selected == 0) {
+            // Nicole's requirement to remove the hash if on the home page.
+            // http://stackoverflow.com/questions/1397329/how-to-remove-the-hash-from-window-location-with-javascript-without-page-refresh#answer-5298684
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+          } else {
+            window.location.hash = "#" + tabNames[tabs.selected];
+          }
+          pages.selected = tabs.selected;
+        });
+      },
+      toggle: function(event) {
+        var selector = event.target.getAttribute('data-toggle');
+        var collapse = document.querySelector(selector);
+        collapse.opened = !collapse.opened;
+        // if (collapse.opened) {
+        //   event.target.src = "images/something.png";
+        // } else {
+        //   event.target.src = "images/somethingelse.png";
+        // }
+      },
+      toggleAndResize: function(event) {
+        this.toggle(event);
+        this.$.weddingMap.resize();
+      },
+    });
+</script>
 </dom-module>
 
-<script>
-  console.log("test");
-  Polymer({
-    is: 'wedding-polymer',
-    ready: function() {
-      var tabs = document.querySelector('paper-tabs');
-      var pages = document.querySelector('iron-pages');
 
-      // Deault to tab based on hash.
-      var tabNames = ["home", "story", "details", "gallery", "registry"];
-      var hash = window.location.hash.substring(1);
-      var tabIndex = tabNames.indexOf(hash);
-      if (tabIndex > 0) {
-        pages.selected = tabs.selected = tabIndex;
-      }
-
-      // When changing the tab, change the page.
-      tabs.addEventListener('iron-select', function() {
-        if (tabs.selected == 0) {
-          // Nicole's requirement to remove the hash if on the home page.
-          // http://stackoverflow.com/questions/1397329/how-to-remove-the-hash-from-window-location-with-javascript-without-page-refresh#answer-5298684
-          history.pushState("", document.title, window.location.pathname + window.location.search);
-        } else {
-          window.location.hash = "#" + tabNames[tabs.selected];
-        }
-        pages.selected = tabs.selected;
-      });
-    },
-  });
-</script>

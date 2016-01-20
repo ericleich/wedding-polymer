@@ -19,6 +19,7 @@
     "iron-image": "PolymerElements/iron-image#~1.0.4",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#~1.2.2",
     "google-map": "GoogleWebComponents/google-map#~1.1.7",
-    "iron-a11y-keys": "PolymerElements/iron-a11y-keys#~1.0.4"
+    "iron-a11y-keys": "PolymerElements/iron-a11y-keys#~1.0.4",
+    "iron-collapse": "PolymerElements/iron-collapse#~1.0.5"
   }
 }
