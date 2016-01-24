@@ -163,6 +163,8 @@ A wedding website.
     .details-header img {
       cursor: pointer;
       margin-right: 10px;
+      width: 50px;
+      height: 50px;
     }
 
     .details-header span {
@@ -200,7 +202,6 @@ A wedding website.
       <div class="table-cell lace-left"></div>
 
       <div class="stuff">
-        <img src="images/banner2.png" class="centerme" style="margin-bottom: 10px" width=800>
         <img src="images/flowers-banner.png" class="centerme" style="margin-bottom: 10px" width=800>
 
         <paper-tabs class="transparent-teal" selected="0" align-bottom style="margin-bottom: 1px">
@@ -404,7 +405,7 @@ A wedding website.
           <div class="details"> <!-- Wedding Details -->
             <paper-card elevation="3">
               <div class="details-header">
-                <img src="images/map/eric.jpg" on-click="toggle" data-toggle="#collapse-who">
+                <img src="images/plus.png" on-click="toggle" data-toggle="#collapse-who">
                 <span>Who</span>
               </div>
               <iron-collapse id="collapse-who">
@@ -413,7 +414,7 @@ A wedding website.
             </paper-card>
             <paper-card elevation="3">
               <div class="details-header">
-                <img src="images/map/eric.jpg" on-click="toggle" data-toggle="#collapse-when">
+                <img src="images/plus.png" on-click="toggle" data-toggle="#collapse-when">
                 <span>When</span>
               </div>
               <iron-collapse id="collapse-when">
@@ -447,7 +448,7 @@ A wedding website.
             </paper-card>
             <paper-card elevation="3">
               <div class="details-header">
-                <img src="images/map/eric.jpg" on-click="toggleAndResize" data-toggle="#collapse-where">
+                <img src="images/plus.png" on-click="toggleAndResize" data-toggle="#collapse-where">
                 <span>Where</span>
               </div>
               <iron-collapse id="collapse-where">
@@ -484,7 +485,8 @@ A wedding website.
             </wedding-gallery>
           </div>
           <div> <!-- Registry -->
-            There is none! We want $$$$!!!!!
+            <h1>Stay tuned</h1>
+            <p>We don't have a registry set up just yet. However, we will also accept cash/checks. 
           </div>
         </iron-pages>
       </div>
@@ -523,11 +525,11 @@ A wedding website.
         var selector = event.target.getAttribute('data-toggle');
         var collapse = document.querySelector(selector);
         collapse.opened = !collapse.opened;
-        // if (collapse.opened) {
-        //   event.target.src = "images/something.png";
-        // } else {
-        //   event.target.src = "images/somethingelse.png";
-        // }
+        if (collapse.opened) {
+          event.target.src = "images/minus.png";
+        } else {
+          event.target.src = "images/plus.png";
+        }
       },
       toggleAndResize: function(event) {
         this.toggle(event);
