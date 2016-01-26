@@ -163,12 +163,12 @@ A wedding website.
     .details-header img {
       cursor: pointer;
       margin-right: 10px;
-      width: 30px;
-      height: 30px;
+      width: 15px;
+      height: 15px;
     }
 
     .details-header span {
-      font-size: 24pt;
+      font-size: 20px;
       font-weight: bold;
     }
 
@@ -181,6 +181,7 @@ A wedding website.
     wedding-gallery img {
       margin: 5px;
       max-height: 150px;
+      cursor: pointer;
     }
 
     /*
@@ -406,7 +407,7 @@ A wedding website.
             <paper-card elevation="3">
               <div class="details-header">
                 <img src="images/plus.png" on-click="toggle" data-toggle="#collapse-who">
-                <span>Who</span>
+                <span>WHO</span>
               </div>
               <iron-collapse id="collapse-who">
                 Some stuff
@@ -415,7 +416,7 @@ A wedding website.
             <paper-card elevation="3">
               <div class="details-header">
                 <img src="images/plus.png" on-click="toggle" data-toggle="#collapse-when">
-                <span>When</span>
+                <span>WHEN</span>
               </div>
               <iron-collapse id="collapse-when">
                 Our special day is April 8, 2016. We are closing in on it!
@@ -449,7 +450,7 @@ A wedding website.
             <paper-card elevation="3">
               <div class="details-header">
                 <img src="images/plus.png" on-click="toggleAndResize" data-toggle="#collapse-where">
-                <span>Where</span>
+                <span>WHERE</span>
               </div>
               <iron-collapse id="collapse-where">
                 <wedding-map id="weddingMap"></wedding-map>
