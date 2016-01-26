@@ -4,27 +4,29 @@
 <dom-module id="wedding-map">
   <template>
     <google-map id="map" style="height:600px" zoom="17" fit-to-markers click-events="true" on-google-map-click="mapClicked">
-      <google-map-marker latitude="25.7478254" longitude="-80.175637" icon="images/map/wedding.png">
-        <h1>This is The Rusty Pelican!</h1>
-        <p style="color:red">You can put any html in here</p>
+      <google-map-marker latitude="25.7478254" longitude="-80.175637" icon="images/map/wedding.png" animation="bounce" on-google-map-marker-open="closePreviousMarker">
+        <h2>The Rusty Pelican</h2>
       </google-map-marker>
-      <google-map-marker latitude="26.0742392" longitude="-80.1527909" icon="images/map/airport.png">
-        <h1>This is the Fort Lauderdale Airport!</h1>
-        <p style="color:red">You can put any html in here</p>
+      <google-map-marker latitude="26.0742392" longitude="-80.1527909" icon="images/map/airport.png" on-google-map-marker-open="closePreviousMarker">
+        <h2>Fort Lauderdale Airport</h2>
       </google-map-marker>
-      <google-map-marker latitude="25.7958698" longitude="-80.2892344" icon="images/map/airport.png">
-        <h1>This is the Miami Airport!</h1>
-        <p style="color:red">You can put any html in here</p>
+      <google-map-marker latitude="25.7958698" longitude="-80.2892344" icon="images/map/airport.png" on-google-map-marker-open="closePreviousMarker">
+        <h2>Miami Airport</h2>
       </google-map-marker>
-      <google-map-marker latitude="25.7708938" longitude="-80.1931437" icon="images/map/hotel.png">
-        <h1>This is the Hyatt Regency!</h1>
-        <p style="color:red">You can put any html in here</p>
+      <google-map-marker latitude="25.7708938" longitude="-80.1931437" icon="images/map/hotel.png" on-google-map-marker-open="closePreviousMarker">
+        <h2>Hotel TBD. Stay tuned!</h2>
       </google-map-marker>
     </google-map>
   </template>
   <script>
     Polymer({
       is: "wedding-map",
+      /***
+       * @private
+       * @type Object
+       * @default null
+       */
+      openMarker: null,
       ready: function() {
         this.$.map.additionalMapOptions = {
             scrollwheel: false,
@@ -37,6 +39,12 @@
       },
       resize: function() {
         this.$.map.resize();
+      },
+      closePreviousMarker: function(event) {
+        if (this.openMarker) {
+          this.openMarker.open = false;
+        }
+        this.openMarker = event.target;
       },
     });
   </script>
