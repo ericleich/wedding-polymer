@@ -38,9 +38,8 @@ A countdown timer made with Polymer
     }
 
     #clock .header {
-      font-size: 40px;
+      font-size: 20px;
       text-align: center;
-      font-family: Edwardian_Script;
       margin-top: 5px;
     }
 
@@ -145,7 +144,7 @@ A countdown timer made with Polymer
       console.log("ready");
       var now = new Date();
       if (!this.toDate) {
-        var defaultToDate = new Date(2016, 3, 8, 17, 30, 0);
+        var defaultToDate = new Date(2016, 3, 8, 18, 0, 0);
         this.toDate = new Date(defaultToDate.getTime() +
                                defaultToDate.getTimezoneOffset() * 60000 -
                                (4 * 3600 * 1000));

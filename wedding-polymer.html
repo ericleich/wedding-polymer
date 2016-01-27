@@ -36,15 +36,37 @@ A wedding website.
       font-size: 20px;
     }
 
-    .stuff {
+    .site {
+      display: table;
+      margin: auto;
+    }
+
+    .content {
       width: 960px;
       background-image: url("images/background-white-0.75.png");
       display: table-cell;
+      position: relative;
     }
 
-    .morestuff {
-      display: table;
-      margin: auto;
+
+    .main-date-absolute {
+      position: absolute;
+      top: 20px;
+      left: 35px;
+      padding: 10px;
+      border-radius: 50%;
+      background-color: #996699;
+      color: white;
+    }
+
+     .main-days-absolute {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      padding: 10px;
+      border-radius: 50%;
+      background-color: #996699;
+      color: white;
     }
 
     paper-tabs.transparent-teal {
@@ -155,6 +177,10 @@ A wedding website.
       margin-bottom: 10px;
     }
 
+    .details iron-collapse {
+      margin-left: 25px;
+    }
+
     .details-header {
       @apply(--layout-horizontal);
       @apply(--layout-center);
@@ -199,10 +225,14 @@ A wedding website.
     */
   </style>
   <template>
-    <div class="morestuff">
+    <div class="site">
       <div class="table-cell lace-left"></div>
 
-      <div class="stuff">
+      <div class="content">
+        <!-- Absolutely positioned -->
+        <paper-card elevation="3" class="main-date-absolute">April 8, 2016</paper-card>
+        <paper-card elevation="3" class="main-days-absolute"><span id="daysLeft">?</span> days to go</paper-card>
+
         <img src="images/flowers-banner.png" class="centerme" style="margin-bottom: 10px" width=800>
 
         <paper-tabs class="transparent-teal" selected="0" align-bottom style="margin-bottom: 1px">
@@ -419,7 +449,8 @@ A wedding website.
                 <span>WHEN</span>
               </div>
               <iron-collapse id="collapse-when">
-                Our special day is April 8, 2016. We are closing in on it!
+                <p>Our special day is April 8, 2016. We are closing in on it!</p>
+                <span>Wedding countdown:</span>
                 <my-countdown style="text-align: center"></my-countdown>
 
                 <h2>Schedule</h2>
@@ -521,6 +552,15 @@ A wedding website.
           }
           pages.selected = tabs.selected;
         });
+
+        // Update number of days until wedding.
+        this._updateDaysToGo();
+      },
+      _updateDaysToGo: function() {
+        var now = new Date();
+        var weddingDate = new Date(2016, 3, 8, 18, 0, 0); // April 8, 2016 - 6 PM
+        var numDays = Math.floor((weddingDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+        this.$.daysLeft.innerHTML = numDays;
       },
       toggle: function(event) {
         var selector = event.target.getAttribute('data-toggle');
