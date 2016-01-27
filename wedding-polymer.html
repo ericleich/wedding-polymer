@@ -6,10 +6,8 @@
 <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="bower_components/iron-image/iron-image.html">
 <link rel="import" href="bower_components/iron-pages/iron-pages.html">
-<link rel="import" href="bower_components/my-countdown/my-countdown.html">
 <link rel="import" href="bower_components/wedding-map/wedding-map.html">
 <link rel="import" href="bower_components/wedding-gallery/wedding-gallery.html">
-<script src="bower_components/moment/moment.js"></script>
 
 <!--
 A wedding website.
@@ -231,7 +229,7 @@ A wedding website.
       <div class="content">
         <!-- Absolutely positioned -->
         <paper-card elevation="3" class="main-date-absolute">April 8, 2016</paper-card>
-        <paper-card elevation="3" class="main-days-absolute"><span id="daysLeft">?</span> days to go</paper-card>
+        <paper-card elevation="3" class="main-days-absolute">[[daysLeft]] days to go</paper-card>
 
         <img src="images/flowers-banner.png" class="centerme" style="margin-bottom: 10px" width=800>
 
@@ -449,9 +447,7 @@ A wedding website.
                 <span>WHEN</span>
               </div>
               <iron-collapse id="collapse-when">
-                <p>Our special day is April 8, 2016. We are closing in on it!</p>
-                <span>Wedding countdown:</span>
-                <my-countdown style="text-align: center"></my-countdown>
+                <p>Our special day is April 8, 2016. We are closing in on it! There are only [[daysLeft]] days to go!</p> 
 
                 <h2>Schedule</h2>
                 <table border=1>
@@ -529,6 +525,11 @@ A wedding website.
   <script>
     Polymer({
       is: 'wedding-polymer',
+      /***
+       * @private
+       * @type String
+       */
+      daysLeft: null,
       ready: function() {
         var tabs = document.querySelector('paper-tabs');
         var pages = document.querySelector('iron-pages');
@@ -559,8 +560,7 @@ A wedding website.
       _updateDaysToGo: function() {
         var now = new Date();
         var weddingDate = new Date(2016, 3, 8, 18, 0, 0); // April 8, 2016 - 6 PM
-        var numDays = Math.floor((weddingDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-        this.$.daysLeft.innerHTML = numDays;
+        this.daysLeft = Math.floor((weddingDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
       },
       toggle: function(event) {
         var selector = event.target.getAttribute('data-toggle');
