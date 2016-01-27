@@ -3,19 +3,43 @@
 
 <dom-module id="wedding-map">
   <template>
-    <google-map id="map" style="height:600px" zoom="17" fit-to-markers click-events="true" on-google-map-click="mapClicked">
-      <google-map-marker latitude="25.7478254" longitude="-80.175637" icon="images/map/wedding.png" animation="bounce" on-google-map-marker-open="closePreviousMarker">
-        <h2>The Rusty Pelican</h2>
+    <google-map id="map" style="height:600px" zoom="12" latitude="25.7478254" longitude="-80.175637" click-events="true" on-google-map-click="mapClicked">
+      <google-map-marker latitude="25.7478254" longitude="-80.175637" icon="images/map/wedding.png" animation="DROP" on-google-map-marker-open="closePreviousMarker">
+        <h2>The Rusty Pelican Restaurant</h2>
+        <p>
+          3201 Rickenbacker Causeway<br>
+          Key Biscayne, FL 33149
+        </p>
       </google-map-marker>
-      <google-map-marker latitude="26.0742392" longitude="-80.1527909" icon="images/map/airport.png" on-google-map-marker-open="closePreviousMarker">
+      <google-map-marker latitude="26.0742392" longitude="-80.1527909" icon="images/map/airport.png" animation="DROP" on-google-map-marker-open="closePreviousMarker">
         <h2>Fort Lauderdale Airport</h2>
+        <p>
+          100 Terminal Dr<br>
+          Fort Lauderdale, FL 33315
+        </p>
       </google-map-marker>
-      <google-map-marker latitude="25.7958698" longitude="-80.2892344" icon="images/map/airport.png" on-google-map-marker-open="closePreviousMarker">
+      <google-map-marker latitude="25.7958698" longitude="-80.2892344" icon="images/map/airport.png" animation="DROP" on-google-map-marker-open="closePreviousMarker">
         <h2>Miami Airport</h2>
+        <p>
+          2100 NW 42nd Ave<br>
+          Miami, FL 33126
+        </p>
       </google-map-marker>
-      <google-map-marker latitude="25.7708938" longitude="-80.1931437" icon="images/map/hotel.png" on-google-map-marker-open="closePreviousMarker">
-        <h2>Hotel TBD. Stay tuned!</h2>
+      <google-map-marker latitude="25.7909635" longitude="-80.1883554" icon="images/map/hotel.png" animation="DROP" on-google-map-marker-open="closePreviousMarker">
+        <h2>Miami Mariott Biscayne Bay</h2>
+        <p>
+          1633 N Bayshore Dr<br>
+          Miami, FL 33132
+        </p>
       </google-map-marker>
+      <google-map-marker latitude="28.4520405" longitude="-81.5003164" icon="images/map/hotel.png" animation="DROP" on-google-map-marker-open="closePreviousMarker">
+        <h2>The Wizarding World of Harry Potter</h2>
+        <p>
+          6000 Universal Blvd<br>
+          Orlando, FL 32819
+        </p>
+      </google-map-marker>
+      
     </google-map>
   </template>
   <script>
@@ -33,18 +57,18 @@
             mapTypeId: "roadmap"
         };
       },
-      mapClicked: function(e) {
-        console.log('click event!');
-        console.log(e.detail.latLng); // prints the coordinates clicked
+      mapClicked: function(event) {
+
       },
       resize: function() {
         this.$.map.resize();
       },
       closePreviousMarker: function(event) {
-        if (this.openMarker) {
+        var newMarker = event.target;
+        if (this.openMarker && this.openMarker != newMarker) {
           this.openMarker.open = false;
         }
-        this.openMarker = event.target;
+        this.openMarker = newMarker;
       },
     });
   </script>
