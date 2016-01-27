@@ -176,12 +176,9 @@ A wedding website.
     }
 
     .details iron-collapse {
-      margin-left: 25px;
-    }
-
-    .details-header {
-      @apply(--layout-horizontal);
-      @apply(--layout-center);
+      margin-left: 50px;
+      margin-right: 50px;
+      margin-bottom: 10px;
     }
 
     .details-header img {
@@ -194,6 +191,22 @@ A wedding website.
     .details-header span {
       font-size: 20px;
       font-weight: bold;
+    }
+
+    .details-ceremony {
+      @apply(--layout-horizontal);
+      @apply(--layout-center);
+    }
+
+    .details-ceremony img {
+      width: 50%;
+      padding-left: 10px;
+      box-sizing: border-box;
+    }
+
+    .details-ceremony td {
+      padding-left: 10px;
+      padding-right: 10px;
     }
 
     .gallery {
@@ -434,55 +447,86 @@ A wedding website.
           <div class="details"> <!-- Wedding Details -->
             <paper-card elevation="3">
               <div class="details-header">
-                <img src="images/plus.png" on-click="toggle" data-toggle="#collapse-who">
-                <span>WHO</span>
+                <img src="images/plus.png" on-click="toggle" data-toggle="#collapse-ceremony">
+                <span>CEREMONY AND RECEPTION</span>
               </div>
-              <iron-collapse id="collapse-who">
-                Some stuff
-              </iron-collapse>
-            </paper-card>
-            <paper-card elevation="3">
-              <div class="details-header">
-                <img src="images/plus.png" on-click="toggle" data-toggle="#collapse-when">
-                <span>WHEN</span>
-              </div>
-              <iron-collapse id="collapse-when">
-                <p>Our special day is April 8, 2016. We are closing in on it! There are only [[daysLeft]] days to go!</p> 
+              <iron-collapse id="collapse-ceremony" >
+                <div class="details-ceremony">
+                  <div style="display: inline-block; width: 50%">
+                    <p>
+                      Both the ceremony and reception will occur at:<br>
+                      <br>
+                      <i>The Rusty Pelican Restaurant</i><br>
+                      3201 Rickenbacker Causeway<br>
+                      Key Biscayne, FL 33149
+                    </p>
 
-                <h2>Schedule</h2>
-                <table border=1>
-                  <tr>
-                    <th>Event</th>
-                    <th>Time</th>
-                  </tr>
-                  <tr>
-                    <td>Arrive at Rusty Pelican</td>
-                    <td>6:00</td>
-                  </tr>
-                  <tr>
-                    <td>Ceremony</td>
-                    <td>6:30 - 7:00</td>
-                  </tr>
-                  <tr>
-                    <td>Cocktails</td>
-                    <td>7:00 - 7:45</td>
-                  </tr>
-                  <tr>
-                    <td>Reception</td>
-                    <td>7:45 - 11:00</td>
-                  </tr>
-                </table>
+
+                    <h2>Schedule</h2>
+                    <table border=1>
+                      <tr>
+                        <th>Event</th>
+                        <th>Time</th>
+                      </tr>
+                      <tr>
+                        <td>Guest Arrival</td>
+                        <td>6:00</td>
+                      </tr>
+                      <tr>
+                        <td>Ceremony</td>
+                        <td>6:30 - 7:00</td>
+                      </tr>
+                      <tr>
+                        <td>Cocktails</td>
+                        <td>7:00 - 7:45</td>
+                      </tr>
+                      <tr>
+                        <td>Reception</td>
+                        <td>7:45 - 11:00</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <img src="images/rusty-pelican.jpg"/>
+                </div>
               </iron-collapse>
             </paper-card>
             <paper-card elevation="3">
               <div class="details-header">
-                <img src="images/plus.png" on-click="toggleAndResize" data-toggle="#collapse-where">
-                <span>WHERE</span>
+                <img src="images/plus.png" on-click="toggleAndResize" data-toggle="#collapse-accommodations">
+                <span>ACCOMMODATIONS</span>
               </div>
-              <iron-collapse id="collapse-where">
-                <wedding-map id="weddingMap"></wedding-map>
+              <iron-collapse id="collapse-accommodations">
+                <p>
+                  For your convenience, we are in the process of finalizing a courtesy block at:<br>
+                  <br>
+                  <a href="http://www.marriott.com/hotels/travel/miabb-miami-marriott-biscayne-bay/">Miami Mariott Biscayne Bay</a><br>
+                  1633 North Bayshore Drive<br>
+                  Miami, Florida 33132<br>
+                  <ul>
+                    <li>Preferred rate: $219</li>
+                    <li>Parking: $34/valet or $29/self parking</li>
+                    <li>Distance to Rusty Pelican: 20-25 minutes</li>
+                  </ul>
+                </p>
+                <p>** Note: The preferred rate expires on 3/8/2016.</p> 
               </iron-collapse>
             </paper-card>
+            <paper-card elevation="3">
+              <div class="details-header">
+                <img src="images/plus.png" on-click="toggle" data-toggle="#collapse-transportation">
+                <span>TRANSPORTATION</span>
+              </div>
+              <iron-collapse id="collapse-transportation">
+                <h2>Getting to Miami</h2>
+                <p>For out of town guests, the most convenient airport to fly into is Miami International Airport (MIA).<p>
+                <h2>Driving</h2>
+                <p>
+                  Valet parking at The Rusty Pelican is available for $6 per vehicle. Self parking is not available.
+                  Please be aware that there is also a $1.75 toll to cross the Rickenbacker Causeway to get into Key Biscayne.
+                </p>
+              </iron-collapse>
+            </paper-card>
+            <paper-card elevation="3"><wedding-map id="weddingMap"></wedding-map></paper-card>
           </div>
           <div> <!-- Gallery -->
             <wedding-gallery>
