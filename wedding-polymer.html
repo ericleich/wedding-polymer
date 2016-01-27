@@ -181,8 +181,11 @@ A wedding website.
       margin-bottom: 10px;
     }
 
-    .details-header img {
+    .details-header {
       cursor: pointer;
+    }
+
+    .details-header img {
       margin-right: 10px;
       width: 15px;
       height: 15px;
@@ -446,8 +449,8 @@ A wedding website.
           </div>
           <div class="details"> <!-- Wedding Details -->
             <paper-card elevation="3">
-              <div class="details-header">
-                <img src="images/plus.png" on-click="toggle" data-toggle="#collapse-ceremony">
+              <div class="details-header" on-click="toggle" data-toggle="#collapse-ceremony">
+                <img src="images/plus.png">
                 <span>CEREMONY AND RECEPTION</span>
               </div>
               <iron-collapse id="collapse-ceremony" >
@@ -491,8 +494,8 @@ A wedding website.
               </iron-collapse>
             </paper-card>
             <paper-card elevation="3">
-              <div class="details-header">
-                <img src="images/plus.png" on-click="toggleAndResize" data-toggle="#collapse-accommodations">
+              <div class="details-header" on-click="toggleAndResize" data-toggle="#collapse-accommodations">
+                <img src="images/plus.png">
                 <span>ACCOMMODATIONS</span>
               </div>
               <iron-collapse id="collapse-accommodations">
@@ -505,20 +508,22 @@ A wedding website.
                   <ul>
                     <li>Preferred rate: $219</li>
                     <li>Parking: $34/valet or $29/self parking</li>
-                    <li>Distance to Rusty Pelican: 20-25 minutes</li>
+                    <li>Distance to Rusty Pelican: 20-25 minutes with Friday rush-hour traffic</li>
                   </ul>
                 </p>
                 <p>** Note: The preferred rate expires on 3/8/2016.</p> 
               </iron-collapse>
             </paper-card>
             <paper-card elevation="3">
-              <div class="details-header">
-                <img src="images/plus.png" on-click="toggle" data-toggle="#collapse-transportation">
+              <div class="details-header" on-click="toggle" data-toggle="#collapse-transportation">
+                <img src="images/plus.png">
                 <span>TRANSPORTATION</span>
               </div>
               <iron-collapse id="collapse-transportation">
                 <h2>Getting to Miami</h2>
-                <p>For out of town guests, the most convenient airport to fly into is Miami International Airport (MIA).<p>
+                <p>For out of town guests, the closest airport to fly into is Miami International Airport (MIA). However, the
+                  Fort Lauderdale-Hollywood International Airport (FLL) is also an option, and is only about a 30 minute drive
+                  if you plan on renting a car.<p>
                 <h2>Driving</h2>
                 <p>
                   Valet parking at The Rusty Pelican is available for $6 per vehicle. Self parking is not available.
@@ -607,13 +612,18 @@ A wedding website.
         this.daysLeft = Math.floor((weddingDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
       },
       toggle: function(event) {
-        var selector = event.target.getAttribute('data-toggle');
+        var target = event.target;
+        while (target && !target.getAttribute('data-toggle')) {
+          target = target.parentNode;
+        }
+        var selector = target.getAttribute('data-toggle');
         var collapse = document.querySelector(selector);
         collapse.opened = !collapse.opened;
+        var img = target.querySelector("img");
         if (collapse.opened) {
-          event.target.src = "images/minus.png";
+          target.src = "images/minus.png";
         } else {
-          event.target.src = "images/plus.png";
+          target.src = "images/plus.png";
         }
       },
       toggleAndResize: function(event) {
