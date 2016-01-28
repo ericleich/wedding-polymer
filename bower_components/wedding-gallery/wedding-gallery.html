@@ -139,10 +139,43 @@
                   // Present the overlay.
                   this.$.modalOverlay.style.display = 'block';
 
+                  // Show the controls.
+                  this.showControls();
+
                   // Add a target to the key listener when the popup loads.
                   this.$.keylistener.target = document.body;
 
                   return false;
+                },
+                showControls: function() {
+                  console.log("show");
+                  this.lastActivity = new Date();
+                  var controls = document.querySelectorAll('.control');
+                  for (var index = 0; index < controls.length; index++) {
+                      controls[index].style.display = 'block';
+                  }
+                  if (this.lastActivityTimeout) {
+                    clearTimeout(this.lastActivityTimeout);
+                  }
+                  this.lastActivityTimeout = setTimeout(this.checkForHideControls.bind(this), 1000);
+                },
+                checkForHideControls: function() {
+                  console.log("check for hide");
+                  var now = new Date();
+                  if (this.lastActivity && (now - this.lastActivity) >= 2000) {
+                    this.hideControls();
+                  } else {
+                    this.lastActivityTimeout = setTimeout(this.checkForHideControls.bind(this), 1000);
+                  }
+                },
+                hideControls: function() {
+                  var controls = document.querySelectorAll('.control');
+                  for (var index = 0; index < controls.length; index++) {
+                    controls[index].style.display = 'none';
+                  }
+                  if (this.lastActivityTimeout) {
+                    clearTimeout(this.lastActivityTimeout);
+                  }
                 },
                 next: function(event) {
                   current_index = current_index + 1;
@@ -201,12 +234,12 @@
       <!-- The modal dialog, which will be used to wrap the lightbox content -->
       <iron-a11y-keys id="keylistener" keys="[[boundKeys]]" on-keys-pressed="keypressed">
       <div id="modalOverlay" class="modal">
-          <div class="modal-img-wrapper">
+          <div class="modal-img-wrapper" on-mousemove="showControls" on-mouseout="hideControls">
             <img id="modalImg" class="modal-img"/>
             <div class="modal-img-overlay">
-              <button class="close" on-click="close">X</button>
-              <img src="images/left-arrow.png" class="left" on-click="prev"/>
-              <img src="images/right-arrow.png" class="right" on-click="next"/>
+              <button class="close control" on-click="close">X</button>
+              <img src="images/left-arrow.png" class="left control" on-click="prev"/>
+              <img src="images/right-arrow.png" class="right control" on-click="next"/>
             </div>
           </div>
       </div>
