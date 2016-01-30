@@ -145,7 +145,19 @@
                   // Add a target to the key listener when the popup loads.
                   this.$.keylistener.target = document.body;
 
+                  // The absolutely positioned buttons on top of the image don't update when the
+                  // viewport changes. Add an event which forces a layout update.
+                  this._forceDrawListener = this._forceDraw.bind(this);
+                  window.addEventListener("resize", this._forceDrawListener);
+
                   return false;
+                },
+                _forceDraw: function() {
+                  this.$.modalImg.style.display = "inline-block";
+                  setTimeout(this._forceDraw2.bind(this), 1);
+                },
+                _forceDraw2: function() {
+                  this.$.modalImg.style.display = "block";
                 },
                 showControls: function() {
                   console.log("show");
@@ -203,6 +215,9 @@
 
                   // Remove the key listener on the body. Must set to some node.
                   this.$.keylistener.target = this.$.keylistener;
+
+                  // Remove window resize event which forces a redraw.
+                  window.removeEventListener("resize", this._forceDrawListener);
                 },
                 keypressed: function(event, detail) {
                   console.log(detail.keyboardEvent.keyCode);
