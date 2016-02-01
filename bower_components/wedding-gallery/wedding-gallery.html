@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-a11y-keys/iron-a11y-keys.html">
+<script src="hammer.js"></script>
 
 <dom-module id="wedding-gallery" >
 <style>
@@ -127,6 +128,16 @@
                     img.addEventListener('click', this.load_popup.bind(this));
                     container.appendChild(images[imageIndex]);
                   }
+
+                  var mc = new Hammer(this.$.imgOverlay);
+                  // listen to events...
+                  var self = this;
+                  mc.on("swipeleft", function(event) {
+                    self.prev();
+                  });
+                  mc.on("swiperight", function(event) {
+                    self.next();
+                  });
                 },
                 load_popup: function(e, detail, sender) {
                   e.preventDefault();
@@ -255,7 +266,7 @@
       <div id="modalOverlay" class="modal">
           <div class="modal-img-wrapper" on-mousemove="showControls">
             <img id="modalImg" class="modal-img"/>
-            <div class="modal-img-overlay">
+            <div id="imgOverlay" class="modal-img-overlay">
               <button class="close control" on-click="close">X</button>
               <img src="images/left-arrow.png" class="left control" on-click="prev"/>
               <img src="images/right-arrow.png" class="right control" on-click="next"/>
