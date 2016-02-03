@@ -615,15 +615,18 @@ A wedding website.
         var target = event.target;
         while (target && !target.getAttribute('data-toggle')) {
           target = target.parentNode;
+          if (target == document.body) {
+            return;
+          }
         }
         var selector = target.getAttribute('data-toggle');
         var collapse = document.querySelector(selector);
         collapse.opened = !collapse.opened;
         var img = target.querySelector("img");
         if (collapse.opened) {
-          target.src = "images/minus.png";
+          img.src = "images/minus.png";
         } else {
-          target.src = "images/plus.png";
+          img.src = "images/plus.png";
         }
       },
       toggleAndResize: function(event) {
