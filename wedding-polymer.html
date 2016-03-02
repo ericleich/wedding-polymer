@@ -224,6 +224,14 @@ A wedding website.
       cursor: pointer;
     }
 
+    .registry-info {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 20px;
+      text-align: center;
+    }
+
     /*
       https://css-tricks.com/snippets/css/a-guide-to-flexbox/
       https://elements.polymer-project.org/guides/flex-layout
@@ -254,7 +262,7 @@ A wedding website.
           <paper-tab>OUR STORY</paper-tab>
           <paper-tab>WEDDING DETAILS</paper-tab>
           <paper-tab>GALLERY</paper-tab>
-          <!--<paper-tab>REGISTRY</paper-tab>-->
+          <paper-tab>REGISTRY</paper-tab>
         </paper-tabs>
 
         <iron-pages selected="0">
@@ -561,10 +569,14 @@ A wedding website.
               <img data-original="images/gallery/engagement/Photo25.jpg" data-index='s24' src="images/gallery/engagement/Photo25.jpg">
             </wedding-gallery>
           </div>
-          <!--<div> <!-- Registry --.>
-            <h1>Stay tuned</h1>
-            <p>We don't have a registry set up just yet. However, we will also accept cash/checks. 
-          </div>-->
+          <div> <!-- Registry -->
+            <paper-card elevation="3" class="registry-info">
+              <p>
+                Please check out our wedding registry on zola.com by clicking
+                <a target="_blank" href="https://www.zola.com/registry/nicoleloveseric">here</a>.
+              </p>
+            </paper-card>
+          </div>
         </iron-pages>
       </div>
 
