@@ -253,7 +253,7 @@ A wedding website.
       <div class="content">
         <!-- Absolutely positioned -->
         <paper-card elevation="3" class="main-date-absolute">April 8, 2016</paper-card>
-        <paper-card elevation="3" class="main-days-absolute">[[daysLeft]] days to go</paper-card>
+        <paper-card elevation="3" class="main-days-absolute">Married for [[daysMarried]] days</paper-card>
 
         <img src="images/flowers-banner.png" class="centerme" style="margin-bottom: 10px" width=800>
 
@@ -625,7 +625,7 @@ A wedding website.
        * @private
        * @type String
        */
-      daysLeft: null,
+      daysMarried: null,
       ready: function() {
         var tabs = document.querySelector('paper-tabs');
         var pages = document.querySelector('iron-pages');
@@ -650,13 +650,13 @@ A wedding website.
           pages.selected = tabs.selected;
         });
 
-        // Update number of days until wedding.
-        this._updateDaysToGo();
+        // Update number of days since the wedding.
+        this._updateDaysMarried();
       },
-      _updateDaysToGo: function() {
+      _updateDaysMarried: function() {
         var now = new Date();
         var weddingDate = new Date(2016, 3, 8, 18, 0, 0); // April 8, 2016 - 6 PM
-        this.daysLeft = Math.floor((weddingDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+        this.daysMarried = Math.floor((now.getTime() - weddingDate.getTime()) / (1000 * 60 * 60 * 24));
       },
       toggle: function(event) {
         var target = event.target;
